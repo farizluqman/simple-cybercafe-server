@@ -168,6 +168,11 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+<<<<<<< HEAD
+=======
+
+# Project Specific Ignores
+>>>>>>> 33aa280024599106c286bd7984a895604203be18
 bin/Debug/Simple CyberCafe Server 1.0.exe
 bin/Debug/Simple CyberCafe Server 1.0.exe.config
 bin/Debug/Simple CyberCafe Server 1.0.vshost.exe
