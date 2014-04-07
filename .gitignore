@@ -168,3 +168,20 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# Project Specific Ignores
+bin/Debug/Simple CyberCafe Server 1.0.exe
+bin/Debug/Simple CyberCafe Server 1.0.exe.config
+bin/Debug/Simple CyberCafe Server 1.0.vshost.exe
+bin/Debug/Simple CyberCafe Server 1.0.vshost.exe.config
+bin/Debug/Simple CyberCafe Server 1.0.vshost.exe.manifest
+bin/Debug/Simple CyberCafe Server 1.0.xml
+bin/Debug/cybercafe-server.vshost.exe.config
+bin/Debug/cybercafe-server.vshost.exe.manifest
+bin/Debug/server.property/server.property
+bin/Debug/clients/PC1.cfg
+bin/Debug/clients/PC2.cfg
+bin/Debug/clients/PC3.cfg
+bin/Debug/clients/PC4.cfg
+bin/Debug/clients/PC5.cfg
+bin/Debug/clients/PC6.cfg
