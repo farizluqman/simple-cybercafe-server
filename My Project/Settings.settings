@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="admin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="staff" Type="System.String" Scope="User">
+      <Value Profile="(Default)">staff</Value>
+    </Setting>
+    <Setting Name="admin_pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21232f297a57a5a743894a0e4a801fc3</Value>
+    </Setting>
+    <Setting Name="staff_pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1253208465b1efa876f982d8a9e73eef</Value>
+    </Setting>
+    <Setting Name="rate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="currency" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RM</Value>
+    </Setting>
+    <Setting Name="remember_login" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>
