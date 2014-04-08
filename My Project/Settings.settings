@@ -15,7 +15,7 @@
       <Value Profile="(Default)">1253208465b1efa876f982d8a9e73eef</Value>
     </Setting>
     <Setting Name="rate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="currency" Type="System.String" Scope="User">
       <Value Profile="(Default)">RM</Value>
