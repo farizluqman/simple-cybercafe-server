@@ -89,6 +89,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="configuration.Designer.vb">
+      <DependentUpon>configuration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="configuration.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="module-charges.vb" />
     <Compile Include="module-authentication.vb" />
     <Compile Include="module-readsettings.vb" />
@@ -146,6 +152,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="configuration.resx">
+      <DependentUpon>configuration.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.vb</DependentUpon>
     </EmbeddedResource>
@@ -171,7 +180,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

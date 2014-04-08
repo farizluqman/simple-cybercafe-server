@@ -86,11 +86,11 @@ Public Class frmHome
         ElseIf readClientConfig("clients", "accesslevel", selectedPC) = "2" Then
             changeAlertBox(("The client is currently in " + statusAccesslevel(selectedPC) + " mode."), "error")
         ElseIf readClientConfig("clients", "accesslevel", selectedPC) = "3" Then
-
+            changeAlertBox(("The client is currently in " + statusAccesslevel(selectedPC) + " mode."), "error")
         ElseIf readClientConfig("clients", "accesslevel", selectedPC) = "4" Then
-
+            changeAlertBox(("The client is currently in " + statusAccesslevel(selectedPC) + " mode."), "error")
         ElseIf readClientConfig("clients", "accesslevel", selectedPC) = "5" Then
-
+            changeAlertBox(("The client is currently in " + statusAccesslevel(selectedPC) + " mode."), "error")
         Else
 
         End If
