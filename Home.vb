@@ -17,7 +17,7 @@ Imports System.ComponentModel
 Public Class frmHome
     Public isLoggedIn As Boolean = False
     Public loggedInAs As String
-    Public loginLevel As Integer
+    Public access_level As Integer
     Public admin_array() As String = My.Settings.admin.Split(New String() {", "}, StringSplitOptions.RemoveEmptyEntries)
     Public staff_array() As String = My.Settings.staff.Split(New String() {", "}, StringSplitOptions.RemoveEmptyEntries)
     Public admin_pass_array() As String = My.Settings.admin_pass.Split(New String() {", "}, StringSplitOptions.RemoveEmptyEntries)
@@ -117,6 +117,18 @@ Public Class frmHome
                 saveClientConfig("clients", "timeout", Now, selectedPC)
                 frmReceipt.Show()
                 changeAlertBox("The client is successfully logged out", "success")
+            ElseIf accesslevel = 3 Then
+                logout(selectedPC)
+                changeAlertBox("The client is successfully logged out", "success")
+            ElseIf accesslevel = 4 Then
+                logout(selectedPC)
+                changeAlertBox("The client is successfully logged out", "success")
+            ElseIf accesslevel = 5 Then
+                logout(selectedPC)
+                changeAlertBox("The client is successfully logged out", "success")
+            ElseIf accesslevel = 6 Then
+                logout(selectedPC)
+                changeAlertBox("The client is successfully logged out", "success")
             End If
         End If
         clientInfo()
@@ -193,19 +205,19 @@ Public Class frmHome
     End Sub
 
     Private Sub cmdLoginStaff_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoginStaff.Click
-        If loginLevel = 1 Then
+        If access_level = 1 OrElse access_level = 2 Then
             errorbox("You don't have permission to do that!", "Login PC as Staff")
         End If
     End Sub
 
     Private Sub cmdLoginAdmin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdLoginAdmin.Click
-        If loginLevel = 1 Then
+        If access_level = 1 OrElse access_level = 2 Then
             errorbox("You don't have permission to do that!", "Login PC as Admin")
         End If
     End Sub
 
     Private Sub cmdUnlock_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUnlock.Click
-        If loginLevel = 1 Then
+        If access_level = 1 OrElse access_level = 2 Then
             errorbox("You don't have permission to do that!", "Unlock")
         End If
     End Sub
@@ -258,5 +270,9 @@ Public Class frmHome
             toggleOpen.Checked = False
             toggleOpen.Show()
         End If
+    End Sub
+
+    Private Sub cmdSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSettings.Click
+        frmConfiguration.Show()
     End Sub
 End Class

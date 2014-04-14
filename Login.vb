@@ -15,14 +15,14 @@
 Public Class frmLogin
     Dim username As String
     Dim password As String
-    Dim login_status
+    Dim access_level As Integer
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmHome.statusMain.Text = "Logging In..."
         frmHome.statusMain.RectColor = Color.GreenYellow
     End Sub
 
     Private Sub frmLogin_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        If login_status = 1 OrElse login_status = 2 Then
+        If access_level = 1 OrElse access_level = 2 OrElse access_level = 3 OrElse access_level = 4 Then
             frmHome.loggedInAs = username
             frmHome.statusMain.Text = "Logged in as " + username
             frmHome.statusMain.RectColor = Color.FromArgb(35, 168, 109)
@@ -31,7 +31,7 @@ Public Class frmLogin
             frmHome.alertHome.Text = "Welcome to Simple CyberCafe Server 1.0"
             frmHome.alertHome.Visible = True
             frmHome.Enabled = True
-            frmHome.loginLevel = login_status
+            frmHome.access_level = access_level
             If toggleRemember.Checked = True Then
                 My.Settings.remember_login = username
                 My.Settings.Save()
@@ -65,9 +65,9 @@ Public Class frmLogin
         username = txtUsername.Text
         password = txtPassword.Text
 
-        login_status = login(username, password)
+        access_level = login(username, password)
 
-        If login_status = 2 Then
+        If access_level = 4 OrElse access_level = 3 OrElse access_level = 2 OrElse access_level = 1 Then
             alertLogin.Visible = False
             alertLogin.Text = "Logged in successfully"
             alertLogin.kind = FlatAlertBox._Kind.Success
@@ -75,15 +75,7 @@ Public Class frmLogin
             frmHome.isLoggedIn = True
             Me.Close()
             Exit Sub
-        ElseIf login_status = 1 Then
-            alertLogin.Visible = False
-            alertLogin.Text = "Logged in successfully"
-            alertLogin.kind = FlatAlertBox._Kind.Success
-            alertLogin.Visible = True
-            frmHome.isLoggedIn = True
-            Me.Close()
-            Exit Sub
-        ElseIf login_status = 0 Then
+        ElseIf access_level = 0 Then
             alertLogin.Visible = False
             alertLogin.Text = "Invalid username or password"
             alertLogin.kind = FlatAlertBox._Kind.Error
