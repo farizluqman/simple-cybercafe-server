@@ -28,6 +28,10 @@ Partial Class frmHome
         Me.timerClock = New System.Windows.Forms.Timer(Me.components)
         Me.timerTimeLeft = New System.Windows.Forms.Timer(Me.components)
         Me.timerTotalTime = New System.Windows.Forms.Timer(Me.components)
+        Me.TblMembersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ServerDataSet = New cybercafe_server.serverDataSet()
+        Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
+        Me.TblMembersTableAdapter = New cybercafe_server.serverDataSetTableAdapters.tblMembersTableAdapter()
         Me.FormSkin1s = New cybercafe_server.FormSkin()
         Me.cmdLogout = New cybercafe_server.FlatButton()
         Me.alertHome = New cybercafe_server.FlatAlertBox()
@@ -47,6 +51,10 @@ Partial Class frmHome
         Me.cmdRefreshClients = New cybercafe_server.FlatButton()
         Me.FlatTabControl2 = New cybercafe_server.FlatTabControl()
         Me.tabBilling = New System.Windows.Forms.TabPage()
+        Me.linkShowMemberName = New System.Windows.Forms.LinkLabel()
+        Me.linkViewItems = New System.Windows.Forms.LinkLabel()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtMemberName = New cybercafe_server.FlatTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtTimeLeft = New cybercafe_server.FlatTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -88,9 +96,40 @@ Partial Class frmHome
         Me.SendMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.CloseSessionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tabServices = New System.Windows.Forms.TabPage()
         Me.tabMembers = New System.Windows.Forms.TabPage()
+        Me.cmdDeleteSelectedMember = New cybercafe_server.FlatButton()
+        Me.cmdSendMessages = New cybercafe_server.FlatButton()
+        Me.cmdEditMembershipTypes = New cybercafe_server.FlatButton()
+        Me.cmdAddMember = New cybercafe_server.FlatButton()
+        Me.cmdEditSelectedMember = New cybercafe_server.FlatButton()
+        Me.dataMembers = New System.Windows.Forms.DataGridView()
+        Me.IDNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MemberNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MemberDOBDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BalanceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UsernameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TypeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IsLoggedInDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.FlatTextBox2 = New cybercafe_server.FlatTextBox()
+        Me.FlatTextBox3 = New cybercafe_server.FlatTextBox()
+        Me.tabServices = New System.Windows.Forms.TabPage()
+        Me.FlatTabControl3 = New cybercafe_server.FlatTabControl()
+        Me.tabFnD = New System.Windows.Forms.TabPage()
+        Me.tabPrinting = New System.Windows.Forms.TabPage()
+        Me.tabPrepaidCodes = New System.Windows.Forms.TabPage()
+        Me.tabMiscItems = New System.Windows.Forms.TabPage()
+        Me.tabSales = New System.Windows.Forms.TabPage()
+        Me.FlatTabControl4 = New cybercafe_server.FlatTabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.TabPage7 = New System.Windows.Forms.TabPage()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        CType(Me.TblMembersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ServerDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FormSkin1s.SuspendLayout()
         Me.FlatTabControl1.SuspendLayout()
         Me.tabTerminal.SuspendLayout()
@@ -100,6 +139,13 @@ Partial Class frmHome
         Me.FlatGroupBox2.SuspendLayout()
         Me.FlatGroupBox1.SuspendLayout()
         Me.menuTermClients.SuspendLayout()
+        Me.tabMembers.SuspendLayout()
+        CType(Me.dataMembers, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabServices.SuspendLayout()
+        Me.FlatTabControl3.SuspendLayout()
+        Me.tabSales.SuspendLayout()
+        Me.FlatTabControl4.SuspendLayout()
         Me.SuspendLayout()
         '
         'ImageList1
@@ -121,6 +167,20 @@ Partial Class frmHome
         '
         Me.timerTotalTime.Interval = 1000
         '
+        'TblMembersBindingSource
+        '
+        Me.TblMembersBindingSource.DataMember = "tblMembers"
+        Me.TblMembersBindingSource.DataSource = Me.ServerDataSet
+        '
+        'ServerDataSet
+        '
+        Me.ServerDataSet.DataSetName = "serverDataSet"
+        Me.ServerDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TblMembersTableAdapter
+        '
+        Me.TblMembersTableAdapter.ClearBeforeFill = True
+        '
         'FormSkin1s
         '
         Me.FormSkin1s.BackColor = System.Drawing.Color.White
@@ -141,7 +201,7 @@ Partial Class frmHome
         Me.FormSkin1s.HeaderMaximize = False
         Me.FormSkin1s.Location = New System.Drawing.Point(0, 0)
         Me.FormSkin1s.Name = "FormSkin1s"
-        Me.FormSkin1s.Size = New System.Drawing.Size(991, 650)
+        Me.FormSkin1s.Size = New System.Drawing.Size(1011, 678)
         Me.FormSkin1s.TabIndex = 1
         Me.FormSkin1s.TabStop = False
         Me.FormSkin1s.Text = "Simple CyberCafe Server 1.0"
@@ -152,7 +212,7 @@ Partial Class frmHome
         Me.cmdLogout.BaseColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.cmdLogout.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdLogout.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdLogout.Location = New System.Drawing.Point(873, 51)
+        Me.cmdLogout.Location = New System.Drawing.Point(894, 51)
         Me.cmdLogout.Name = "cmdLogout"
         Me.cmdLogout.Rounded = False
         Me.cmdLogout.Size = New System.Drawing.Size(106, 32)
@@ -166,9 +226,9 @@ Partial Class frmHome
         Me.alertHome.Cursor = System.Windows.Forms.Cursors.Hand
         Me.alertHome.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.alertHome.kind = cybercafe_server.FlatAlertBox._Kind.Info
-        Me.alertHome.Location = New System.Drawing.Point(4, 585)
+        Me.alertHome.Location = New System.Drawing.Point(4, 614)
         Me.alertHome.Name = "alertHome"
-        Me.alertHome.Size = New System.Drawing.Size(983, 42)
+        Me.alertHome.Size = New System.Drawing.Size(1003, 42)
         Me.alertHome.TabIndex = 2
         Me.alertHome.Text = "Welcome to Simple CyberCafe Server 1.0"
         Me.alertHome.Visible = False
@@ -179,7 +239,7 @@ Partial Class frmHome
         Me.cmdSettings.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.cmdSettings.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdSettings.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdSettings.Location = New System.Drawing.Point(756, 51)
+        Me.cmdSettings.Location = New System.Drawing.Point(777, 51)
         Me.cmdSettings.Name = "cmdSettings"
         Me.cmdSettings.Rounded = False
         Me.cmdSettings.Size = New System.Drawing.Size(106, 32)
@@ -193,11 +253,11 @@ Partial Class frmHome
         Me.statusMain.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.statusMain.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.statusMain.ForeColor = System.Drawing.Color.White
-        Me.statusMain.Location = New System.Drawing.Point(0, 627)
+        Me.statusMain.Location = New System.Drawing.Point(0, 655)
         Me.statusMain.Name = "statusMain"
         Me.statusMain.RectColor = System.Drawing.Color.Red
         Me.statusMain.ShowTimeDate = False
-        Me.statusMain.Size = New System.Drawing.Size(991, 23)
+        Me.statusMain.Size = New System.Drawing.Size(1011, 23)
         Me.statusMain.TabIndex = 3
         Me.statusMain.Text = "Not Logged In"
         Me.statusMain.TextColor = System.Drawing.Color.White
@@ -208,7 +268,7 @@ Partial Class frmHome
         Me.FlatClose1.BackColor = System.Drawing.Color.White
         Me.FlatClose1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(168, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
         Me.FlatClose1.Font = New System.Drawing.Font("Marlett", 10.0!)
-        Me.FlatClose1.Location = New System.Drawing.Point(961, 14)
+        Me.FlatClose1.Location = New System.Drawing.Point(981, 14)
         Me.FlatClose1.Name = "FlatClose1"
         Me.FlatClose1.Size = New System.Drawing.Size(18, 18)
         Me.FlatClose1.TabIndex = 2
@@ -221,7 +281,7 @@ Partial Class frmHome
         Me.FlatMini1.BackColor = System.Drawing.Color.White
         Me.FlatMini1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatMini1.Font = New System.Drawing.Font("Marlett", 12.0!)
-        Me.FlatMini1.Location = New System.Drawing.Point(899, 14)
+        Me.FlatMini1.Location = New System.Drawing.Point(919, 14)
         Me.FlatMini1.Name = "FlatMini1"
         Me.FlatMini1.Size = New System.Drawing.Size(18, 18)
         Me.FlatMini1.TabIndex = 1
@@ -235,7 +295,7 @@ Partial Class frmHome
         Me.FlatMax1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatMax1.Enabled = False
         Me.FlatMax1.Font = New System.Drawing.Font("Marlett", 12.0!)
-        Me.FlatMax1.Location = New System.Drawing.Point(932, 14)
+        Me.FlatMax1.Location = New System.Drawing.Point(952, 14)
         Me.FlatMax1.Name = "FlatMax1"
         Me.FlatMax1.Size = New System.Drawing.Size(18, 18)
         Me.FlatMax1.TabIndex = 0
@@ -247,15 +307,15 @@ Partial Class frmHome
         Me.FlatTabControl1.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatTabControl1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl1.Controls.Add(Me.tabTerminal)
-        Me.FlatTabControl1.Controls.Add(Me.tabServices)
         Me.FlatTabControl1.Controls.Add(Me.tabMembers)
-        Me.FlatTabControl1.Controls.Add(Me.TabPage1)
+        Me.FlatTabControl1.Controls.Add(Me.tabServices)
+        Me.FlatTabControl1.Controls.Add(Me.tabSales)
         Me.FlatTabControl1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.FlatTabControl1.ItemSize = New System.Drawing.Size(120, 40)
         Me.FlatTabControl1.Location = New System.Drawing.Point(0, 49)
         Me.FlatTabControl1.Name = "FlatTabControl1"
         Me.FlatTabControl1.SelectedIndex = 0
-        Me.FlatTabControl1.Size = New System.Drawing.Size(991, 589)
+        Me.FlatTabControl1.Size = New System.Drawing.Size(1011, 617)
         Me.FlatTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.FlatTabControl1.TabIndex = 4
         '
@@ -274,7 +334,7 @@ Partial Class frmHome
         Me.tabTerminal.Location = New System.Drawing.Point(4, 44)
         Me.tabTerminal.Name = "tabTerminal"
         Me.tabTerminal.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabTerminal.Size = New System.Drawing.Size(983, 541)
+        Me.tabTerminal.Size = New System.Drawing.Size(1003, 569)
         Me.tabTerminal.TabIndex = 0
         Me.tabTerminal.Text = "Terminal"
         '
@@ -284,7 +344,7 @@ Partial Class frmHome
         Me.FlatButton5.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatButton5.Cursor = System.Windows.Forms.Cursors.Hand
         Me.FlatButton5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.FlatButton5.Location = New System.Drawing.Point(151, 450)
+        Me.FlatButton5.Location = New System.Drawing.Point(148, 474)
         Me.FlatButton5.Name = "FlatButton5"
         Me.FlatButton5.Rounded = False
         Me.FlatButton5.Size = New System.Drawing.Size(116, 32)
@@ -298,7 +358,7 @@ Partial Class frmHome
         Me.FlatButton4.BaseColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.FlatButton4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.FlatButton4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.FlatButton4.Location = New System.Drawing.Point(278, 450)
+        Me.FlatButton4.Location = New System.Drawing.Point(270, 474)
         Me.FlatButton4.Name = "FlatButton4"
         Me.FlatButton4.Rounded = False
         Me.FlatButton4.Size = New System.Drawing.Size(150, 32)
@@ -312,7 +372,7 @@ Partial Class frmHome
         Me.FlatButton3.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatButton3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.FlatButton3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.FlatButton3.Location = New System.Drawing.Point(24, 450)
+        Me.FlatButton3.Location = New System.Drawing.Point(24, 474)
         Me.FlatButton3.Name = "FlatButton3"
         Me.FlatButton3.Rounded = False
         Me.FlatButton3.Size = New System.Drawing.Size(116, 32)
@@ -328,7 +388,7 @@ Partial Class frmHome
         Me.linkClear.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.linkClear.LinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.linkClear.LinkVisited = True
-        Me.linkClear.Location = New System.Drawing.Point(619, 23)
+        Me.linkClear.Location = New System.Drawing.Point(641, 23)
         Me.linkClear.Name = "linkClear"
         Me.linkClear.Size = New System.Drawing.Size(36, 16)
         Me.linkClear.TabIndex = 10
@@ -360,7 +420,7 @@ Partial Class frmHome
         Me.txtFilter.Multiline = False
         Me.txtFilter.Name = "txtFilter"
         Me.txtFilter.ReadOnly = False
-        Me.txtFilter.Size = New System.Drawing.Size(552, 29)
+        Me.txtFilter.Size = New System.Drawing.Size(574, 29)
         Me.txtFilter.TabIndex = 8
         Me.txtFilter.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtFilter.TextColor = System.Drawing.Color.Silver
@@ -372,7 +432,7 @@ Partial Class frmHome
         Me.cmdRefreshClients.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdRefreshClients.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdRefreshClients.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdRefreshClients.Location = New System.Drawing.Point(553, 450)
+        Me.cmdRefreshClients.Location = New System.Drawing.Point(574, 474)
         Me.cmdRefreshClients.Name = "cmdRefreshClients"
         Me.cmdRefreshClients.Rounded = False
         Me.cmdRefreshClients.Size = New System.Drawing.Size(106, 32)
@@ -388,16 +448,20 @@ Partial Class frmHome
         Me.FlatTabControl2.Controls.Add(Me.tabCommands)
         Me.FlatTabControl2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.FlatTabControl2.ItemSize = New System.Drawing.Size(120, 40)
-        Me.FlatTabControl2.Location = New System.Drawing.Point(665, 17)
+        Me.FlatTabControl2.Location = New System.Drawing.Point(686, 17)
         Me.FlatTabControl2.Name = "FlatTabControl2"
         Me.FlatTabControl2.SelectedIndex = 0
-        Me.FlatTabControl2.Size = New System.Drawing.Size(312, 469)
+        Me.FlatTabControl2.Size = New System.Drawing.Size(312, 498)
         Me.FlatTabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.FlatTabControl2.TabIndex = 1
         '
         'tabBilling
         '
         Me.tabBilling.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabBilling.Controls.Add(Me.linkShowMemberName)
+        Me.tabBilling.Controls.Add(Me.linkViewItems)
+        Me.tabBilling.Controls.Add(Me.Label11)
+        Me.tabBilling.Controls.Add(Me.txtMemberName)
         Me.tabBilling.Controls.Add(Me.Label10)
         Me.tabBilling.Controls.Add(Me.txtTimeLeft)
         Me.tabBilling.Controls.Add(Me.Label9)
@@ -423,9 +487,67 @@ Partial Class frmHome
         Me.tabBilling.Location = New System.Drawing.Point(4, 44)
         Me.tabBilling.Name = "tabBilling"
         Me.tabBilling.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabBilling.Size = New System.Drawing.Size(304, 421)
+        Me.tabBilling.Size = New System.Drawing.Size(304, 450)
         Me.tabBilling.TabIndex = 0
         Me.tabBilling.Text = "Billing"
+        '
+        'linkShowMemberName
+        '
+        Me.linkShowMemberName.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkShowMemberName.AutoSize = True
+        Me.linkShowMemberName.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkShowMemberName.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.linkShowMemberName.LinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkShowMemberName.LinkVisited = True
+        Me.linkShowMemberName.Location = New System.Drawing.Point(250, 333)
+        Me.linkShowMemberName.Name = "linkShowMemberName"
+        Me.linkShowMemberName.Size = New System.Drawing.Size(40, 16)
+        Me.linkShowMemberName.TabIndex = 29
+        Me.linkShowMemberName.TabStop = True
+        Me.linkShowMemberName.Text = "Show"
+        Me.linkShowMemberName.VisitedLinkColor = System.Drawing.Color.White
+        '
+        'linkViewItems
+        '
+        Me.linkViewItems.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkViewItems.AutoSize = True
+        Me.linkViewItems.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkViewItems.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.linkViewItems.LinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkViewItems.LinkVisited = True
+        Me.linkViewItems.Location = New System.Drawing.Point(218, 298)
+        Me.linkViewItems.Name = "linkViewItems"
+        Me.linkViewItems.Size = New System.Drawing.Size(72, 16)
+        Me.linkViewItems.TabIndex = 14
+        Me.linkViewItems.TabStop = True
+        Me.linkViewItems.Text = "View Items"
+        Me.linkViewItems.VisitedLinkColor = System.Drawing.Color.White
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(11, 332)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(101, 19)
+        Me.Label11.TabIndex = 28
+        Me.Label11.Text = "Member Name"
+        '
+        'txtMemberName
+        '
+        Me.txtMemberName.BackColor = System.Drawing.Color.Transparent
+        Me.txtMemberName.Enabled = False
+        Me.txtMemberName.Location = New System.Drawing.Point(118, 327)
+        Me.txtMemberName.MaxLength = 32767
+        Me.txtMemberName.Multiline = False
+        Me.txtMemberName.Name = "txtMemberName"
+        Me.txtMemberName.ReadOnly = True
+        Me.txtMemberName.Size = New System.Drawing.Size(175, 29)
+        Me.txtMemberName.TabIndex = 27
+        Me.txtMemberName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.txtMemberName.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtMemberName.UseSystemPasswordChar = False
         '
         'Label10
         '
@@ -442,12 +564,12 @@ Partial Class frmHome
         '
         Me.txtTimeLeft.BackColor = System.Drawing.Color.Transparent
         Me.txtTimeLeft.Enabled = False
-        Me.txtTimeLeft.Location = New System.Drawing.Point(106, 222)
+        Me.txtTimeLeft.Location = New System.Drawing.Point(118, 222)
         Me.txtTimeLeft.MaxLength = 32767
         Me.txtTimeLeft.Multiline = False
         Me.txtTimeLeft.Name = "txtTimeLeft"
         Me.txtTimeLeft.ReadOnly = True
-        Me.txtTimeLeft.Size = New System.Drawing.Size(187, 29)
+        Me.txtTimeLeft.Size = New System.Drawing.Size(175, 29)
         Me.txtTimeLeft.TabIndex = 25
         Me.txtTimeLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtTimeLeft.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -468,12 +590,12 @@ Partial Class frmHome
         '
         Me.txtTimeNow.BackColor = System.Drawing.Color.Transparent
         Me.txtTimeNow.Enabled = False
-        Me.txtTimeNow.Location = New System.Drawing.Point(106, 117)
+        Me.txtTimeNow.Location = New System.Drawing.Point(118, 117)
         Me.txtTimeNow.MaxLength = 32767
         Me.txtTimeNow.Multiline = False
         Me.txtTimeNow.Name = "txtTimeNow"
         Me.txtTimeNow.ReadOnly = True
-        Me.txtTimeNow.Size = New System.Drawing.Size(187, 29)
+        Me.txtTimeNow.Size = New System.Drawing.Size(175, 29)
         Me.txtTimeNow.TabIndex = 23
         Me.txtTimeNow.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtTimeNow.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -494,12 +616,12 @@ Partial Class frmHome
         '
         Me.txtCharges.BackColor = System.Drawing.Color.Transparent
         Me.txtCharges.Enabled = False
-        Me.txtCharges.Location = New System.Drawing.Point(106, 292)
+        Me.txtCharges.Location = New System.Drawing.Point(118, 292)
         Me.txtCharges.MaxLength = 32767
         Me.txtCharges.Multiline = False
         Me.txtCharges.Name = "txtCharges"
         Me.txtCharges.ReadOnly = True
-        Me.txtCharges.Size = New System.Drawing.Size(187, 29)
+        Me.txtCharges.Size = New System.Drawing.Size(175, 29)
         Me.txtCharges.TabIndex = 21
         Me.txtCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtCharges.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -531,12 +653,12 @@ Partial Class frmHome
         '
         Me.txtTimeOut.BackColor = System.Drawing.Color.Transparent
         Me.txtTimeOut.Enabled = False
-        Me.txtTimeOut.Location = New System.Drawing.Point(106, 187)
+        Me.txtTimeOut.Location = New System.Drawing.Point(118, 187)
         Me.txtTimeOut.MaxLength = 32767
         Me.txtTimeOut.Multiline = False
         Me.txtTimeOut.Name = "txtTimeOut"
         Me.txtTimeOut.ReadOnly = True
-        Me.txtTimeOut.Size = New System.Drawing.Size(187, 29)
+        Me.txtTimeOut.Size = New System.Drawing.Size(175, 29)
         Me.txtTimeOut.TabIndex = 17
         Me.txtTimeOut.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtTimeOut.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -546,12 +668,12 @@ Partial Class frmHome
         '
         Me.txtTotalTime.BackColor = System.Drawing.Color.Transparent
         Me.txtTotalTime.Enabled = False
-        Me.txtTotalTime.Location = New System.Drawing.Point(106, 257)
+        Me.txtTotalTime.Location = New System.Drawing.Point(118, 257)
         Me.txtTotalTime.MaxLength = 32767
         Me.txtTotalTime.Multiline = False
         Me.txtTotalTime.Name = "txtTotalTime"
         Me.txtTotalTime.ReadOnly = True
-        Me.txtTotalTime.Size = New System.Drawing.Size(187, 29)
+        Me.txtTotalTime.Size = New System.Drawing.Size(175, 29)
         Me.txtTotalTime.TabIndex = 19
         Me.txtTotalTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtTotalTime.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -563,7 +685,7 @@ Partial Class frmHome
         Me.cmdMembers.BaseColor = System.Drawing.Color.FromArgb(CType(CType(155, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.cmdMembers.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdMembers.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdMembers.Location = New System.Drawing.Point(160, 372)
+        Me.cmdMembers.Location = New System.Drawing.Point(160, 402)
         Me.cmdMembers.Name = "cmdMembers"
         Me.cmdMembers.Rounded = False
         Me.cmdMembers.Size = New System.Drawing.Size(133, 43)
@@ -577,7 +699,7 @@ Partial Class frmHome
         Me.cmdPrepaid.BaseColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cmdPrepaid.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPrepaid.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPrepaid.Location = New System.Drawing.Point(15, 372)
+        Me.cmdPrepaid.Location = New System.Drawing.Point(15, 402)
         Me.cmdPrepaid.Name = "cmdPrepaid"
         Me.cmdPrepaid.Rounded = False
         Me.cmdPrepaid.Size = New System.Drawing.Size(133, 43)
@@ -600,12 +722,12 @@ Partial Class frmHome
         '
         Me.txtTimeIn.BackColor = System.Drawing.Color.Transparent
         Me.txtTimeIn.Enabled = False
-        Me.txtTimeIn.Location = New System.Drawing.Point(106, 152)
+        Me.txtTimeIn.Location = New System.Drawing.Point(118, 152)
         Me.txtTimeIn.MaxLength = 32767
         Me.txtTimeIn.Multiline = False
         Me.txtTimeIn.Name = "txtTimeIn"
         Me.txtTimeIn.ReadOnly = True
-        Me.txtTimeIn.Size = New System.Drawing.Size(187, 29)
+        Me.txtTimeIn.Size = New System.Drawing.Size(175, 29)
         Me.txtTimeIn.TabIndex = 13
         Me.txtTimeIn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtTimeIn.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -626,12 +748,12 @@ Partial Class frmHome
         '
         Me.txtAccessLevel.BackColor = System.Drawing.Color.Transparent
         Me.txtAccessLevel.Enabled = False
-        Me.txtAccessLevel.Location = New System.Drawing.Point(106, 82)
+        Me.txtAccessLevel.Location = New System.Drawing.Point(118, 82)
         Me.txtAccessLevel.MaxLength = 32767
         Me.txtAccessLevel.Multiline = False
         Me.txtAccessLevel.Name = "txtAccessLevel"
         Me.txtAccessLevel.ReadOnly = True
-        Me.txtAccessLevel.Size = New System.Drawing.Size(187, 29)
+        Me.txtAccessLevel.Size = New System.Drawing.Size(175, 29)
         Me.txtAccessLevel.TabIndex = 11
         Me.txtAccessLevel.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtAccessLevel.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -652,12 +774,12 @@ Partial Class frmHome
         '
         Me.txtStatus.BackColor = System.Drawing.Color.Transparent
         Me.txtStatus.Enabled = False
-        Me.txtStatus.Location = New System.Drawing.Point(106, 47)
+        Me.txtStatus.Location = New System.Drawing.Point(118, 47)
         Me.txtStatus.MaxLength = 32767
         Me.txtStatus.Multiline = False
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
-        Me.txtStatus.Size = New System.Drawing.Size(187, 29)
+        Me.txtStatus.Size = New System.Drawing.Size(175, 29)
         Me.txtStatus.TabIndex = 9
         Me.txtStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtStatus.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -669,7 +791,7 @@ Partial Class frmHome
         Me.toggleOpen.Checked = False
         Me.toggleOpen.Cursor = System.Windows.Forms.Cursors.Hand
         Me.toggleOpen.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.toggleOpen.Location = New System.Drawing.Point(106, 329)
+        Me.toggleOpen.Location = New System.Drawing.Point(118, 362)
         Me.toggleOpen.Name = "toggleOpen"
         Me.toggleOpen.Options = cybercafe_server.FlatToggle._Options.Style1
         Me.toggleOpen.Size = New System.Drawing.Size(76, 33)
@@ -680,7 +802,7 @@ Partial Class frmHome
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(11, 334)
+        Me.Label1.Location = New System.Drawing.Point(11, 367)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(43, 19)
         Me.Label1.TabIndex = 7
@@ -701,12 +823,12 @@ Partial Class frmHome
         '
         Me.txtSelectedPC.BackColor = System.Drawing.Color.Transparent
         Me.txtSelectedPC.Enabled = False
-        Me.txtSelectedPC.Location = New System.Drawing.Point(106, 12)
+        Me.txtSelectedPC.Location = New System.Drawing.Point(118, 12)
         Me.txtSelectedPC.MaxLength = 32767
         Me.txtSelectedPC.Multiline = False
         Me.txtSelectedPC.Name = "txtSelectedPC"
         Me.txtSelectedPC.ReadOnly = True
-        Me.txtSelectedPC.Size = New System.Drawing.Size(187, 29)
+        Me.txtSelectedPC.Size = New System.Drawing.Size(175, 29)
         Me.txtSelectedPC.TabIndex = 0
         Me.txtSelectedPC.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.txtSelectedPC.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -720,7 +842,7 @@ Partial Class frmHome
         Me.tabCommands.Location = New System.Drawing.Point(4, 44)
         Me.tabCommands.Name = "tabCommands"
         Me.tabCommands.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabCommands.Size = New System.Drawing.Size(304, 421)
+        Me.tabCommands.Size = New System.Drawing.Size(304, 450)
         Me.tabCommands.TabIndex = 1
         Me.tabCommands.Text = "Commands"
         '
@@ -894,7 +1016,7 @@ Partial Class frmHome
         Me.listClients.Location = New System.Drawing.Point(24, 53)
         Me.listClients.MultiSelect = False
         Me.listClients.Name = "listClients"
-        Me.listClients.Size = New System.Drawing.Size(633, 391)
+        Me.listClients.Size = New System.Drawing.Size(656, 411)
         Me.listClients.TabIndex = 0
         Me.listClients.UseCompatibleStateImageBehavior = False
         '
@@ -936,39 +1058,374 @@ Partial Class frmHome
         Me.CloseSessionToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.CloseSessionToolStripMenuItem.Text = "Close Session"
         '
-        'tabServices
-        '
-        Me.tabServices.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.tabServices.Location = New System.Drawing.Point(4, 44)
-        Me.tabServices.Name = "tabServices"
-        Me.tabServices.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabServices.Size = New System.Drawing.Size(983, 541)
-        Me.tabServices.TabIndex = 1
-        Me.tabServices.Text = "Services"
-        '
         'tabMembers
         '
         Me.tabMembers.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabMembers.Controls.Add(Me.cmdDeleteSelectedMember)
+        Me.tabMembers.Controls.Add(Me.cmdSendMessages)
+        Me.tabMembers.Controls.Add(Me.cmdEditMembershipTypes)
+        Me.tabMembers.Controls.Add(Me.cmdAddMember)
+        Me.tabMembers.Controls.Add(Me.cmdEditSelectedMember)
+        Me.tabMembers.Controls.Add(Me.dataMembers)
+        Me.tabMembers.Controls.Add(Me.Label12)
+        Me.tabMembers.Controls.Add(Me.PictureBox1)
+        Me.tabMembers.Controls.Add(Me.LinkLabel1)
+        Me.tabMembers.Controls.Add(Me.FlatTextBox2)
+        Me.tabMembers.Controls.Add(Me.FlatTextBox3)
         Me.tabMembers.Location = New System.Drawing.Point(4, 44)
         Me.tabMembers.Name = "tabMembers"
-        Me.tabMembers.Size = New System.Drawing.Size(983, 541)
+        Me.tabMembers.Size = New System.Drawing.Size(1003, 569)
         Me.tabMembers.TabIndex = 2
         Me.tabMembers.Text = "Members"
+        '
+        'cmdDeleteSelectedMember
+        '
+        Me.cmdDeleteSelectedMember.BackColor = System.Drawing.Color.Transparent
+        Me.cmdDeleteSelectedMember.BaseColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(96, Byte), Integer))
+        Me.cmdDeleteSelectedMember.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmdDeleteSelectedMember.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cmdDeleteSelectedMember.Location = New System.Drawing.Point(20, 466)
+        Me.cmdDeleteSelectedMember.Name = "cmdDeleteSelectedMember"
+        Me.cmdDeleteSelectedMember.Rounded = False
+        Me.cmdDeleteSelectedMember.Size = New System.Drawing.Size(195, 32)
+        Me.cmdDeleteSelectedMember.TabIndex = 21
+        Me.cmdDeleteSelectedMember.Text = "Delete Selected Member"
+        Me.cmdDeleteSelectedMember.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'cmdSendMessages
+        '
+        Me.cmdSendMessages.BackColor = System.Drawing.Color.Transparent
+        Me.cmdSendMessages.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cmdSendMessages.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmdSendMessages.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cmdSendMessages.Location = New System.Drawing.Point(20, 428)
+        Me.cmdSendMessages.Name = "cmdSendMessages"
+        Me.cmdSendMessages.Rounded = False
+        Me.cmdSendMessages.Size = New System.Drawing.Size(195, 32)
+        Me.cmdSendMessages.TabIndex = 20
+        Me.cmdSendMessages.Text = "Send Messages"
+        Me.cmdSendMessages.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'cmdEditMembershipTypes
+        '
+        Me.cmdEditMembershipTypes.BackColor = System.Drawing.Color.Transparent
+        Me.cmdEditMembershipTypes.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cmdEditMembershipTypes.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmdEditMembershipTypes.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cmdEditMembershipTypes.Location = New System.Drawing.Point(20, 390)
+        Me.cmdEditMembershipTypes.Name = "cmdEditMembershipTypes"
+        Me.cmdEditMembershipTypes.Rounded = False
+        Me.cmdEditMembershipTypes.Size = New System.Drawing.Size(195, 32)
+        Me.cmdEditMembershipTypes.TabIndex = 19
+        Me.cmdEditMembershipTypes.Text = "Membership Types"
+        Me.cmdEditMembershipTypes.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'cmdAddMember
+        '
+        Me.cmdAddMember.BackColor = System.Drawing.Color.Transparent
+        Me.cmdAddMember.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cmdAddMember.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmdAddMember.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cmdAddMember.Location = New System.Drawing.Point(20, 352)
+        Me.cmdAddMember.Name = "cmdAddMember"
+        Me.cmdAddMember.Rounded = False
+        Me.cmdAddMember.Size = New System.Drawing.Size(195, 32)
+        Me.cmdAddMember.TabIndex = 18
+        Me.cmdAddMember.Text = "Add New Member"
+        Me.cmdAddMember.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'cmdEditSelectedMember
+        '
+        Me.cmdEditSelectedMember.BackColor = System.Drawing.Color.Transparent
+        Me.cmdEditSelectedMember.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.cmdEditSelectedMember.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmdEditSelectedMember.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cmdEditSelectedMember.Location = New System.Drawing.Point(20, 273)
+        Me.cmdEditSelectedMember.Name = "cmdEditSelectedMember"
+        Me.cmdEditSelectedMember.Rounded = False
+        Me.cmdEditSelectedMember.Size = New System.Drawing.Size(195, 32)
+        Me.cmdEditSelectedMember.TabIndex = 17
+        Me.cmdEditSelectedMember.Text = "Edit Selected Member"
+        Me.cmdEditSelectedMember.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'dataMembers
+        '
+        Me.dataMembers.AutoGenerateColumns = False
+        Me.dataMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dataMembers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDNumberDataGridViewTextBoxColumn, Me.MemberNameDataGridViewTextBoxColumn, Me.MemberDOBDataGridViewTextBoxColumn, Me.BalanceDataGridViewTextBoxColumn, Me.UsernameDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.IsLoggedInDataGridViewCheckBoxColumn})
+        Me.dataMembers.DataSource = Me.TblMembersBindingSource
+        Me.dataMembers.Location = New System.Drawing.Point(229, 64)
+        Me.dataMembers.MultiSelect = False
+        Me.dataMembers.Name = "dataMembers"
+        Me.dataMembers.ReadOnly = True
+        Me.dataMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dataMembers.Size = New System.Drawing.Size(752, 434)
+        Me.dataMembers.TabIndex = 16
+        '
+        'IDNumberDataGridViewTextBoxColumn
+        '
+        Me.IDNumberDataGridViewTextBoxColumn.DataPropertyName = "ID_Number"
+        Me.IDNumberDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IDNumberDataGridViewTextBoxColumn.Name = "IDNumberDataGridViewTextBoxColumn"
+        Me.IDNumberDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MemberNameDataGridViewTextBoxColumn
+        '
+        Me.MemberNameDataGridViewTextBoxColumn.DataPropertyName = "Member_Name"
+        Me.MemberNameDataGridViewTextBoxColumn.HeaderText = "Name"
+        Me.MemberNameDataGridViewTextBoxColumn.Name = "MemberNameDataGridViewTextBoxColumn"
+        Me.MemberNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MemberNameDataGridViewTextBoxColumn.Width = 130
+        '
+        'MemberDOBDataGridViewTextBoxColumn
+        '
+        Me.MemberDOBDataGridViewTextBoxColumn.DataPropertyName = "Member_DOB"
+        Me.MemberDOBDataGridViewTextBoxColumn.HeaderText = "DOB"
+        Me.MemberDOBDataGridViewTextBoxColumn.Name = "MemberDOBDataGridViewTextBoxColumn"
+        Me.MemberDOBDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MemberDOBDataGridViewTextBoxColumn.ToolTipText = "Date of Birth"
+        '
+        'BalanceDataGridViewTextBoxColumn
+        '
+        Me.BalanceDataGridViewTextBoxColumn.DataPropertyName = "Balance"
+        Me.BalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
+        Me.BalanceDataGridViewTextBoxColumn.Name = "BalanceDataGridViewTextBoxColumn"
+        Me.BalanceDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'UsernameDataGridViewTextBoxColumn
+        '
+        Me.UsernameDataGridViewTextBoxColumn.DataPropertyName = "Username"
+        Me.UsernameDataGridViewTextBoxColumn.HeaderText = "Username"
+        Me.UsernameDataGridViewTextBoxColumn.Name = "UsernameDataGridViewTextBoxColumn"
+        Me.UsernameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'TypeDataGridViewTextBoxColumn
+        '
+        Me.TypeDataGridViewTextBoxColumn.DataPropertyName = "Type"
+        Me.TypeDataGridViewTextBoxColumn.HeaderText = "Type"
+        Me.TypeDataGridViewTextBoxColumn.Name = "TypeDataGridViewTextBoxColumn"
+        Me.TypeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'IsLoggedInDataGridViewCheckBoxColumn
+        '
+        Me.IsLoggedInDataGridViewCheckBoxColumn.DataPropertyName = "IsLoggedIn"
+        Me.IsLoggedInDataGridViewCheckBoxColumn.HeaderText = "Logged In"
+        Me.IsLoggedInDataGridViewCheckBoxColumn.Name = "IsLoggedInDataGridViewCheckBoxColumn"
+        Me.IsLoggedInDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.IsLoggedInDataGridViewCheckBoxColumn.Width = 78
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(92, 40)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(51, 19)
+        Me.Label12.TabIndex = 15
+        Me.Label12.Text = "Picture"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.cybercafe_server.My.Resources.Resources.generic_avatar
+        Me.PictureBox1.Location = New System.Drawing.Point(20, 66)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(195, 195)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 14
+        Me.PictureBox1.TabStop = False
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel1.LinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.LinkLabel1.LinkVisited = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(939, 34)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(36, 16)
+        Me.LinkLabel1.TabIndex = 13
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "clear"
+        Me.LinkLabel1.VisitedLinkColor = System.Drawing.Color.White
+        '
+        'FlatTextBox2
+        '
+        Me.FlatTextBox2.BackColor = System.Drawing.Color.Transparent
+        Me.FlatTextBox2.Enabled = False
+        Me.FlatTextBox2.Location = New System.Drawing.Point(229, 28)
+        Me.FlatTextBox2.MaxLength = 32767
+        Me.FlatTextBox2.Multiline = False
+        Me.FlatTextBox2.Name = "FlatTextBox2"
+        Me.FlatTextBox2.ReadOnly = True
+        Me.FlatTextBox2.Size = New System.Drawing.Size(83, 29)
+        Me.FlatTextBox2.TabIndex = 12
+        Me.FlatTextBox2.Text = "Filter"
+        Me.FlatTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.FlatTextBox2.TextColor = System.Drawing.Color.White
+        Me.FlatTextBox2.UseSystemPasswordChar = False
+        '
+        'FlatTextBox3
+        '
+        Me.FlatTextBox3.BackColor = System.Drawing.Color.Transparent
+        Me.FlatTextBox3.Location = New System.Drawing.Point(311, 28)
+        Me.FlatTextBox3.MaxLength = 32767
+        Me.FlatTextBox3.Multiline = False
+        Me.FlatTextBox3.Name = "FlatTextBox3"
+        Me.FlatTextBox3.ReadOnly = False
+        Me.FlatTextBox3.Size = New System.Drawing.Size(670, 29)
+        Me.FlatTextBox3.TabIndex = 11
+        Me.FlatTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.FlatTextBox3.TextColor = System.Drawing.Color.Silver
+        Me.FlatTextBox3.UseSystemPasswordChar = False
+        '
+        'tabServices
+        '
+        Me.tabServices.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabServices.Controls.Add(Me.FlatTabControl3)
+        Me.tabServices.Location = New System.Drawing.Point(4, 44)
+        Me.tabServices.Name = "tabServices"
+        Me.tabServices.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabServices.Size = New System.Drawing.Size(1003, 569)
+        Me.tabServices.TabIndex = 1
+        Me.tabServices.Text = "Services"
+        '
+        'FlatTabControl3
+        '
+        Me.FlatTabControl3.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.FlatTabControl3.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.FlatTabControl3.Controls.Add(Me.tabFnD)
+        Me.FlatTabControl3.Controls.Add(Me.tabPrinting)
+        Me.FlatTabControl3.Controls.Add(Me.tabPrepaidCodes)
+        Me.FlatTabControl3.Controls.Add(Me.tabMiscItems)
+        Me.FlatTabControl3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.FlatTabControl3.ItemSize = New System.Drawing.Size(120, 40)
+        Me.FlatTabControl3.Location = New System.Drawing.Point(8, 6)
+        Me.FlatTabControl3.Name = "FlatTabControl3"
+        Me.FlatTabControl3.SelectedIndex = 0
+        Me.FlatTabControl3.Size = New System.Drawing.Size(989, 509)
+        Me.FlatTabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.FlatTabControl3.TabIndex = 5
+        '
+        'tabFnD
+        '
+        Me.tabFnD.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabFnD.Location = New System.Drawing.Point(4, 44)
+        Me.tabFnD.Name = "tabFnD"
+        Me.tabFnD.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabFnD.Size = New System.Drawing.Size(981, 461)
+        Me.tabFnD.TabIndex = 0
+        Me.tabFnD.Text = "Foods and Drinks"
+        '
+        'tabPrinting
+        '
+        Me.tabPrinting.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabPrinting.Location = New System.Drawing.Point(4, 44)
+        Me.tabPrinting.Name = "tabPrinting"
+        Me.tabPrinting.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPrinting.Size = New System.Drawing.Size(981, 461)
+        Me.tabPrinting.TabIndex = 1
+        Me.tabPrinting.Text = "Printing Services"
+        '
+        'tabPrepaidCodes
+        '
+        Me.tabPrepaidCodes.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabPrepaidCodes.Location = New System.Drawing.Point(4, 44)
+        Me.tabPrepaidCodes.Name = "tabPrepaidCodes"
+        Me.tabPrepaidCodes.Size = New System.Drawing.Size(981, 461)
+        Me.tabPrepaidCodes.TabIndex = 2
+        Me.tabPrepaidCodes.Text = "Prepaid Codes"
+        '
+        'tabMiscItems
+        '
+        Me.tabMiscItems.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabMiscItems.Location = New System.Drawing.Point(4, 44)
+        Me.tabMiscItems.Name = "tabMiscItems"
+        Me.tabMiscItems.Size = New System.Drawing.Size(981, 461)
+        Me.tabMiscItems.TabIndex = 3
+        Me.tabMiscItems.Text = "Misc Items"
+        '
+        'tabSales
+        '
+        Me.tabSales.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.tabSales.Controls.Add(Me.FlatTabControl4)
+        Me.tabSales.Location = New System.Drawing.Point(4, 44)
+        Me.tabSales.Name = "tabSales"
+        Me.tabSales.Size = New System.Drawing.Size(1003, 569)
+        Me.tabSales.TabIndex = 3
+        Me.tabSales.Text = "Sales"
+        '
+        'FlatTabControl4
+        '
+        Me.FlatTabControl4.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.FlatTabControl4.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.FlatTabControl4.Controls.Add(Me.TabPage1)
+        Me.FlatTabControl4.Controls.Add(Me.TabPage5)
+        Me.FlatTabControl4.Controls.Add(Me.TabPage6)
+        Me.FlatTabControl4.Controls.Add(Me.TabPage7)
+        Me.FlatTabControl4.Controls.Add(Me.TabPage2)
+        Me.FlatTabControl4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.FlatTabControl4.ItemSize = New System.Drawing.Size(120, 40)
+        Me.FlatTabControl4.Location = New System.Drawing.Point(8, 6)
+        Me.FlatTabControl4.Name = "FlatTabControl4"
+        Me.FlatTabControl4.SelectedIndex = 0
+        Me.FlatTabControl4.Size = New System.Drawing.Size(989, 509)
+        Me.FlatTabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.FlatTabControl4.TabIndex = 6
         '
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.TabPage1.Location = New System.Drawing.Point(4, 44)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(983, 541)
-        Me.TabPage1.TabIndex = 3
-        Me.TabPage1.Text = "Sales"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(981, 461)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Daily Report"
+        '
+        'TabPage5
+        '
+        Me.TabPage5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.TabPage5.Location = New System.Drawing.Point(4, 44)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Size = New System.Drawing.Size(981, 461)
+        Me.TabPage5.TabIndex = 1
+        Me.TabPage5.Text = "Weekly Report"
+        '
+        'TabPage6
+        '
+        Me.TabPage6.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.TabPage6.Location = New System.Drawing.Point(4, 44)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Size = New System.Drawing.Size(981, 461)
+        Me.TabPage6.TabIndex = 2
+        Me.TabPage6.Text = "Monthly Report"
+        '
+        'TabPage7
+        '
+        Me.TabPage7.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.TabPage7.Location = New System.Drawing.Point(4, 44)
+        Me.TabPage7.Name = "TabPage7"
+        Me.TabPage7.Size = New System.Drawing.Size(981, 461)
+        Me.TabPage7.TabIndex = 3
+        Me.TabPage7.Text = "Annual Report"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.TabPage2.Location = New System.Drawing.Point(4, 44)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Size = New System.Drawing.Size(981, 461)
+        Me.TabPage2.TabIndex = 4
+        Me.TabPage2.Text = "Export"
         '
         'frmHome
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(991, 650)
+        Me.ClientSize = New System.Drawing.Size(1011, 678)
         Me.Controls.Add(Me.FormSkin1s)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
@@ -976,6 +1433,8 @@ Partial Class frmHome
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CyberCafe Server 1.0"
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
+        CType(Me.TblMembersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ServerDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FormSkin1s.ResumeLayout(False)
         Me.FlatTabControl1.ResumeLayout(False)
         Me.tabTerminal.ResumeLayout(False)
@@ -987,6 +1446,14 @@ Partial Class frmHome
         Me.FlatGroupBox2.ResumeLayout(False)
         Me.FlatGroupBox1.ResumeLayout(False)
         Me.menuTermClients.ResumeLayout(False)
+        Me.tabMembers.ResumeLayout(False)
+        Me.tabMembers.PerformLayout()
+        CType(Me.dataMembers, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabServices.ResumeLayout(False)
+        Me.FlatTabControl3.ResumeLayout(False)
+        Me.tabSales.ResumeLayout(False)
+        Me.FlatTabControl4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1038,7 +1505,6 @@ Partial Class frmHome
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents txtTimeNow As cybercafe_server.FlatTextBox
     Friend WithEvents timerClock As System.Windows.Forms.Timer
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents FlatButton5 As cybercafe_server.FlatButton
     Friend WithEvents FlatButton4 As cybercafe_server.FlatButton
     Friend WithEvents FlatButton3 As cybercafe_server.FlatButton
@@ -1057,5 +1523,43 @@ Partial Class frmHome
     Friend WithEvents FlatButton10 As cybercafe_server.FlatButton
     Friend WithEvents FlatButton9 As cybercafe_server.FlatButton
     Friend WithEvents timerTotalTime As System.Windows.Forms.Timer
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents txtMemberName As cybercafe_server.FlatTextBox
+    Friend WithEvents FlatTabControl3 As cybercafe_server.FlatTabControl
+    Friend WithEvents tabFnD As System.Windows.Forms.TabPage
+    Friend WithEvents tabPrinting As System.Windows.Forms.TabPage
+    Friend WithEvents tabPrepaidCodes As System.Windows.Forms.TabPage
+    Friend WithEvents linkViewItems As System.Windows.Forms.LinkLabel
+    Friend WithEvents tabMiscItems As System.Windows.Forms.TabPage
+    Friend WithEvents linkShowMemberName As System.Windows.Forms.LinkLabel
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents FlatTextBox2 As cybercafe_server.FlatTextBox
+    Friend WithEvents FlatTextBox3 As cybercafe_server.FlatTextBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents cmdAddMember As cybercafe_server.FlatButton
+    Friend WithEvents cmdEditSelectedMember As cybercafe_server.FlatButton
+    Friend WithEvents dataMembers As System.Windows.Forms.DataGridView
+    Friend WithEvents HelpProvider1 As System.Windows.Forms.HelpProvider
+    Friend WithEvents ServerDataSet As cybercafe_server.serverDataSet
+    Friend WithEvents TblMembersBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents TblMembersTableAdapter As cybercafe_server.serverDataSetTableAdapters.tblMembersTableAdapter
+    Friend WithEvents IDNumberDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MemberNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MemberDOBDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents BalanceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UsernameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TypeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IsLoggedInDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents cmdDeleteSelectedMember As cybercafe_server.FlatButton
+    Friend WithEvents cmdSendMessages As cybercafe_server.FlatButton
+    Friend WithEvents cmdEditMembershipTypes As cybercafe_server.FlatButton
+    Friend WithEvents tabSales As System.Windows.Forms.TabPage
+    Friend WithEvents FlatTabControl4 As cybercafe_server.FlatTabControl
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage7 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
 
 End Class

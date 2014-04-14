@@ -31,6 +31,8 @@ Public Class frmHome
     End Function
 
     Private Sub frmHome_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        'TODO: This line of code loads data into the 'ServerDataSet.tblMembers' table. You can move, or remove it, as needed.
+        Me.TblMembersTableAdapter.Fill(Me.ServerDataSet.tblMembers)
         If isLoggedIn = False Then
             frmLogin.Show()
         End If
@@ -143,6 +145,7 @@ Public Class frmHome
         Dim pc As String
         Dim connection_code As String
         Dim accesslevel_code As String
+        ' the function is quiet bloated. need to be fixed for shorter and cleaner codes
         For i = 0 To listClients.SelectedItems.Count - 1
             pc = listClients.SelectedItems(i).Text
             selectedPC = pc
@@ -152,6 +155,7 @@ Public Class frmHome
             txtStatus.Text = statusConnection(connection_code)
             txtAccessLevel.Text = statusAccesslevel(pc)
             txtTimeIn.Text = Date.Parse(readClientConfig("clients", "timein", pc))
+            txtMemberName.Text = "N/A" ' temporary while working on database and membership functionality
             If accesslevel_code = "2" Then ' for open sessions
                 timerTimeLeft.Enabled = False
                 timerTotalTime.Enabled = True
@@ -162,7 +166,7 @@ Public Class frmHome
                 txtTotalTime.Text = getTotalTime(pc)
                 txtTimeOut.Text = "N/A"
                 txtTimeLeft.Text = "N/A"
-                txtCharges.Text = calculateOpen(pc)
+                txtCharges.Text = My.Settings.currency + Format(calculateOpen(pc), " 0.00")
             ElseIf accesslevel_code = "1" Then ' for prepaid sessions
                 timerTimeLeft.Enabled = True
                 timerTotalTime.Enabled = False
@@ -171,7 +175,7 @@ Public Class frmHome
                 toggleOpen.Show()
                 txtTimeOut.Text = getTimeOut(pc)
                 txtTimeLeft.Text = calculateTimeLeft(pc)
-                txtCharges.Text = My.Settings.currency + Format((totalPrepaid(pc)), " 0.00")
+                txtCharges.Text = My.Settings.currency + Format(totalPrepaid(pc), " 0.00")
                 txtTotalTime.Text = getTotalTime(pc)
             ElseIf accesslevel_code = "0" Then ' locked session
                 timerTimeLeft.Enabled = False
@@ -185,6 +189,10 @@ Public Class frmHome
                 txtTotalTime.Text = "N/A"
                 txtTimeLeft.Text = "N/A"
             Else
+                txtCharges.Text = "N/A"
+                txtTimeOut.Text = "N/A"
+                txtTotalTime.Text = "N/A"
+                txtTimeLeft.Text = "N/A"
                 timerTimeLeft.Enabled = False
                 toggleOpen.Hide()
                 toggleOpen.Checked = False

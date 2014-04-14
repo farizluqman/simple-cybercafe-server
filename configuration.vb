@@ -5,7 +5,6 @@
     End Sub
 
     Private Sub frmConfiguration_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.TblMembersTableAdapter.Fill(Me.ServerDataSet.tblMembers)
 
     End Sub
 End Class

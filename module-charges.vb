@@ -32,22 +32,21 @@ Module module_charges
         Return charges
     End Function
 
-    Public Function calculateOpen(ByVal pc As String) As String
+    Public Function calculateOpen(ByVal pc As String) As Double
         Dim TimeIn As DateTime = readClientConfig("clients", "timein", pc)
         Dim TotalTime = DateTime.Now - TimeIn
         Dim charge As Double = calculateToCharge(TotalTime.TotalHours, TotalTime.Minutes)
-        Dim formattedCharge As String = My.Settings.currency + Format(charge, " 0.00")
-        Return formattedCharge
+        Return charge
     End Function
 
     Public Function calculateTimeFromCash(ByVal cash As Double) As String
-        Dim formattedHours
+        Dim formattedTime
         Dim hourlyRate As Double = Convert.ToDouble(My.Settings.rate)
         Dim duration As TimeSpan = TimeSpan.FromHours(cash / hourlyRate)
         Dim hours = Math.Floor(duration.TotalHours)
         Dim minutes = duration.Minutes
-        formattedHours = Format(hours, "00") + " h " + Format(minutes, "00") + " m "
-        Return formattedHours
+        formattedTime = Format(hours, "00") + " h " + Format(minutes, "00") + " m "
+        Return formattedTime
     End Function
 
     Public Function calculateHoursFromCash(ByVal cash As Double) As Integer
