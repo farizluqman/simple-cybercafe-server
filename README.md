@@ -13,6 +13,7 @@ Simple CyberCafe Server is an open source application for managing cyber cafe cl
 - Logging - log errors and other events for troubleshooting (0%)
 - Printing - Printing receipts, reports, POS functions (0%)
 - Network - control the clients remotely. (0%)
+- Database - the database contains username and password. also contains configurations, reports, members (15%)
 
 ###Modules in the project:
 
@@ -25,4 +26,4 @@ Modules used in the project.
 - module-savesettings - Save settings
 - module-timekeeper - contain functions to get timein, timeout, timeleft, adding time, login and logout features
 - module-network - handles all functions like sending login, logout, reboot etc to the clients across the network. (currently working)
-
+- module-database - contains functions for connecting to database, adding, deleting or modifying the database
