@@ -240,6 +240,13 @@ Public Class frmHome
     End Sub
 
     Private Sub toggleOpen_CheckedChanged(ByVal sender As System.Object) Handles toggleOpen.CheckedChanged
+        If selectedPC = Nothing Then
+            errorbox("Please select a PC", "Invalid Option")
+            toggleOpen.Hide()
+            toggleOpen.Checked = False
+            toggleOpen.Show()
+            Exit Sub
+        End If
         Dim accesslevel As Integer = Int(readClientConfig("clients", "accesslevel", selectedPC))
         If accesslevel = 2 Then
             If MsgBox("Do you want to close the current session?", vbQuestion + vbYesNo, "Close session") = MsgBoxResult.Yes Then
@@ -263,7 +270,7 @@ Public Class frmHome
                 toggleOpen.Checked = False
                 toggleOpen.Show()
             End If
-            
+
         Else
             changeAlertBox(("The client is currently in " + statusAccesslevel(selectedPC) + " mode."), "error")
             toggleOpen.Hide()
