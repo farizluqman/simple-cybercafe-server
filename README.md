@@ -2,6 +2,9 @@
 
 Simple CyberCafe Server is an open source application for managing cyber cafe clients, written in VB.net. 
 
+###Latest Update:
+- 15-Apr-14 - The database file is included, named server.mdb. The database is using Jet 4.0 and compatible with Open Office Base. https://wiki.openoffice.org/wiki/Connecting_to_Microsoft_Access
+
 ###Currently working:
 
 - GUI - the graphical user interface (30%)
