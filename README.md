@@ -14,7 +14,7 @@ Simple CyberCafe Server is an open source application for managing cyber cafe cl
 - Members - Manage memberships (for discounts, special rates etc) (0%)
 - Sales - Generate reports, save or print (0%)
 - Logging - log errors and other events for troubleshooting (0%)
-- Printing - Printing receipts, reports, POS functions (0%)
+- Receipts and Reports - Printing receipts, reports, POS functions (20%)
 - Network - control the clients remotely. (0%)
 - Database - the database contains username and password. also contains configurations, reports, members (15%)
 
