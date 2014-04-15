@@ -117,6 +117,7 @@ Public Class frmHome
                 changeAlertBox("The client is successfully logged out", "success")
             ElseIf accesslevel = 2 Then
                 saveClientConfig("clients", "timeout", Now, selectedPC)
+                prepaidMode = -1
                 frmReceipt.Show()
                 changeAlertBox("The client is successfully logged out", "success")
             ElseIf accesslevel = 3 Then
@@ -257,6 +258,7 @@ Public Class frmHome
         End If
         Dim accesslevel As Integer = Int(readClientConfig("clients", "accesslevel", selectedPC))
         If accesslevel = 2 Then
+            prepaidMode = -1
             If MsgBox("Do you want to close the current session?", vbQuestion + vbYesNo, "Close session") = MsgBoxResult.Yes Then
                 If toggleOpen.Checked = False Then
                     saveClientConfig("clients", "timeout", Now, selectedPC)

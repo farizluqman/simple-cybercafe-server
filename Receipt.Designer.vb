@@ -25,6 +25,7 @@ Partial Class frmReceipt
         Me.components = New System.ComponentModel.Container()
         Me.timerFixPayment = New System.Windows.Forms.Timer(Me.components)
         Me.FormSkin1 = New cybercafe_server.FormSkin()
+        Me.FlatTextBox1 = New cybercafe_server.FlatTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.toggleFree = New cybercafe_server.FlatToggle()
         Me.txtChangeDueCurrency = New cybercafe_server.FlatTextBox()
@@ -33,7 +34,7 @@ Partial Class frmReceipt
         Me.txtChargeCurrency = New cybercafe_server.FlatTextBox()
         Me.txtPaymentCurrency = New cybercafe_server.FlatTextBox()
         Me.cmdAllClear = New cybercafe_server.FlatButton()
-        Me.FlatButton12 = New cybercafe_server.FlatButton()
+        Me.cmdOk = New cybercafe_server.FlatButton()
         Me.cmdStartCents = New cybercafe_server.FlatButton()
         Me.cmdPay0 = New cybercafe_server.FlatButton()
         Me.cmdPay9 = New cybercafe_server.FlatButton()
@@ -50,15 +51,12 @@ Partial Class frmReceipt
         Me.txtChangeDue = New cybercafe_server.FlatTextBox()
         Me.statusReceipt = New cybercafe_server.FlatStatusBar()
         Me.tableReceipt = New System.Windows.Forms.DataGridView()
-        Me.cmdClose = New cybercafe_server.FlatButton()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.columnItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.columnQuantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.columnTax = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.columnCharge = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.columnTimeIn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.columnNewTimeOut = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.columnMember = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.columnCharge = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.FormSkin1.SuspendLayout()
         CType(Me.tableReceipt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -73,6 +71,7 @@ Partial Class frmReceipt
         Me.FormSkin1.BackColor = System.Drawing.Color.White
         Me.FormSkin1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.FormSkin1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(53, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.FormSkin1.Controls.Add(Me.FlatTextBox1)
         Me.FormSkin1.Controls.Add(Me.Label3)
         Me.FormSkin1.Controls.Add(Me.toggleFree)
         Me.FormSkin1.Controls.Add(Me.txtChangeDueCurrency)
@@ -81,7 +80,7 @@ Partial Class frmReceipt
         Me.FormSkin1.Controls.Add(Me.txtChargeCurrency)
         Me.FormSkin1.Controls.Add(Me.txtPaymentCurrency)
         Me.FormSkin1.Controls.Add(Me.cmdAllClear)
-        Me.FormSkin1.Controls.Add(Me.FlatButton12)
+        Me.FormSkin1.Controls.Add(Me.cmdOk)
         Me.FormSkin1.Controls.Add(Me.cmdStartCents)
         Me.FormSkin1.Controls.Add(Me.cmdPay0)
         Me.FormSkin1.Controls.Add(Me.cmdPay9)
@@ -98,7 +97,6 @@ Partial Class frmReceipt
         Me.FormSkin1.Controls.Add(Me.txtChangeDue)
         Me.FormSkin1.Controls.Add(Me.statusReceipt)
         Me.FormSkin1.Controls.Add(Me.tableReceipt)
-        Me.FormSkin1.Controls.Add(Me.cmdClose)
         Me.FormSkin1.Controls.Add(Me.Label7)
         Me.FormSkin1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FormSkin1.FlatColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
@@ -107,20 +105,36 @@ Partial Class frmReceipt
         Me.FormSkin1.HeaderMaximize = False
         Me.FormSkin1.Location = New System.Drawing.Point(0, 0)
         Me.FormSkin1.Name = "FormSkin1"
-        Me.FormSkin1.Size = New System.Drawing.Size(748, 539)
+        Me.FormSkin1.Size = New System.Drawing.Size(748, 606)
         Me.FormSkin1.TabIndex = 0
         Me.FormSkin1.Text = "Receipt"
+        '
+        'FlatTextBox1
+        '
+        Me.FlatTextBox1.BackColor = System.Drawing.Color.Transparent
+        Me.FlatTextBox1.Enabled = False
+        Me.FlatTextBox1.Location = New System.Drawing.Point(59, 466)
+        Me.FlatTextBox1.MaxLength = 32767
+        Me.FlatTextBox1.Multiline = True
+        Me.FlatTextBox1.Name = "FlatTextBox1"
+        Me.FlatTextBox1.ReadOnly = True
+        Me.FlatTextBox1.Size = New System.Drawing.Size(350, 46)
+        Me.FlatTextBox1.TabIndex = 56
+        Me.FlatTextBox1.Text = "Warning: Marking un-paid invoices as paid will result in running short of money"
+        Me.FlatTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.FlatTextBox1.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.FlatTextBox1.UseSystemPasswordChar = False
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(261, 398)
+        Me.Label3.Location = New System.Drawing.Point(142, 530)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(82, 21)
+        Me.Label3.Size = New System.Drawing.Size(99, 21)
         Me.Label3.TabIndex = 55
-        Me.Label3.Text = "Make Free"
+        Me.Label3.Text = "Mark as Paid"
         '
         'toggleFree
         '
@@ -128,7 +142,7 @@ Partial Class frmReceipt
         Me.toggleFree.Checked = False
         Me.toggleFree.Cursor = System.Windows.Forms.Cursors.Hand
         Me.toggleFree.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.toggleFree.Location = New System.Drawing.Point(348, 392)
+        Me.toggleFree.Location = New System.Drawing.Point(247, 524)
         Me.toggleFree.Name = "toggleFree"
         Me.toggleFree.Options = cybercafe_server.FlatToggle._Options.Style2
         Me.toggleFree.Size = New System.Drawing.Size(76, 33)
@@ -140,7 +154,7 @@ Partial Class frmReceipt
         Me.txtChangeDueCurrency.BackColor = System.Drawing.Color.Transparent
         Me.txtChangeDueCurrency.Enabled = False
         Me.txtChangeDueCurrency.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtChangeDueCurrency.Location = New System.Drawing.Point(475, 420)
+        Me.txtChangeDueCurrency.Location = New System.Drawing.Point(474, 429)
         Me.txtChangeDueCurrency.MaxLength = 32767
         Me.txtChangeDueCurrency.Multiline = False
         Me.txtChangeDueCurrency.Name = "txtChangeDueCurrency"
@@ -156,7 +170,7 @@ Partial Class frmReceipt
         Me.txtPayment.BackColor = System.Drawing.Color.Transparent
         Me.txtPayment.Enabled = False
         Me.txtPayment.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPayment.Location = New System.Drawing.Point(565, 332)
+        Me.txtPayment.Location = New System.Drawing.Point(564, 333)
         Me.txtPayment.MaxLength = 32767
         Me.txtPayment.Multiline = False
         Me.txtPayment.Name = "txtPayment"
@@ -172,7 +186,7 @@ Partial Class frmReceipt
         Me.txtCharge.BackColor = System.Drawing.Color.Transparent
         Me.txtCharge.Enabled = False
         Me.txtCharge.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCharge.Location = New System.Drawing.Point(565, 244)
+        Me.txtCharge.Location = New System.Drawing.Point(564, 240)
         Me.txtCharge.MaxLength = 32767
         Me.txtCharge.Multiline = False
         Me.txtCharge.Name = "txtCharge"
@@ -188,7 +202,7 @@ Partial Class frmReceipt
         Me.txtChargeCurrency.BackColor = System.Drawing.Color.Transparent
         Me.txtChargeCurrency.Enabled = False
         Me.txtChargeCurrency.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtChargeCurrency.Location = New System.Drawing.Point(475, 244)
+        Me.txtChargeCurrency.Location = New System.Drawing.Point(474, 240)
         Me.txtChargeCurrency.MaxLength = 32767
         Me.txtChargeCurrency.Multiline = False
         Me.txtChargeCurrency.Name = "txtChargeCurrency"
@@ -204,7 +218,7 @@ Partial Class frmReceipt
         Me.txtPaymentCurrency.BackColor = System.Drawing.Color.Transparent
         Me.txtPaymentCurrency.Enabled = False
         Me.txtPaymentCurrency.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPaymentCurrency.Location = New System.Drawing.Point(475, 332)
+        Me.txtPaymentCurrency.Location = New System.Drawing.Point(474, 333)
         Me.txtPaymentCurrency.MaxLength = 32767
         Me.txtPaymentCurrency.Multiline = False
         Me.txtPaymentCurrency.Name = "txtPaymentCurrency"
@@ -221,7 +235,7 @@ Partial Class frmReceipt
         Me.cmdAllClear.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdAllClear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdAllClear.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdAllClear.Location = New System.Drawing.Point(356, 211)
+        Me.cmdAllClear.Location = New System.Drawing.Point(351, 286)
         Me.cmdAllClear.Name = "cmdAllClear"
         Me.cmdAllClear.Rounded = False
         Me.cmdAllClear.Size = New System.Drawing.Size(68, 168)
@@ -229,19 +243,19 @@ Partial Class frmReceipt
         Me.cmdAllClear.Text = "AC"
         Me.cmdAllClear.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
-        'FlatButton12
+        'cmdOk
         '
-        Me.FlatButton12.BackColor = System.Drawing.Color.Transparent
-        Me.FlatButton12.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
-        Me.FlatButton12.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.FlatButton12.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.FlatButton12.Location = New System.Drawing.Point(251, 434)
-        Me.FlatButton12.Name = "FlatButton12"
-        Me.FlatButton12.Rounded = False
-        Me.FlatButton12.Size = New System.Drawing.Size(173, 54)
-        Me.FlatButton12.TabIndex = 47
-        Me.FlatButton12.Text = "Cash"
-        Me.FlatButton12.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.cmdOk.BackColor = System.Drawing.Color.Transparent
+        Me.cmdOk.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.cmdOk.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.cmdOk.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.cmdOk.Location = New System.Drawing.Point(474, 506)
+        Me.cmdOk.Name = "cmdOk"
+        Me.cmdOk.Rounded = False
+        Me.cmdOk.Size = New System.Drawing.Size(223, 54)
+        Me.cmdOk.TabIndex = 47
+        Me.cmdOk.Text = "OK"
+        Me.cmdOk.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
         'cmdStartCents
         '
@@ -249,7 +263,7 @@ Partial Class frmReceipt
         Me.cmdStartCents.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdStartCents.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdStartCents.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdStartCents.Location = New System.Drawing.Point(282, 211)
+        Me.cmdStartCents.Location = New System.Drawing.Point(277, 286)
         Me.cmdStartCents.Name = "cmdStartCents"
         Me.cmdStartCents.Rounded = False
         Me.cmdStartCents.Size = New System.Drawing.Size(68, 52)
@@ -263,7 +277,7 @@ Partial Class frmReceipt
         Me.cmdPay0.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay0.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay0.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay0.Location = New System.Drawing.Point(282, 269)
+        Me.cmdPay0.Location = New System.Drawing.Point(277, 344)
         Me.cmdPay0.Name = "cmdPay0"
         Me.cmdPay0.Rounded = False
         Me.cmdPay0.Size = New System.Drawing.Size(68, 110)
@@ -277,7 +291,7 @@ Partial Class frmReceipt
         Me.cmdPay9.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay9.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay9.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay9.Location = New System.Drawing.Point(208, 327)
+        Me.cmdPay9.Location = New System.Drawing.Point(203, 402)
         Me.cmdPay9.Name = "cmdPay9"
         Me.cmdPay9.Rounded = False
         Me.cmdPay9.Size = New System.Drawing.Size(68, 52)
@@ -291,7 +305,7 @@ Partial Class frmReceipt
         Me.cmdPay8.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay8.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay8.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay8.Location = New System.Drawing.Point(134, 327)
+        Me.cmdPay8.Location = New System.Drawing.Point(129, 402)
         Me.cmdPay8.Name = "cmdPay8"
         Me.cmdPay8.Rounded = False
         Me.cmdPay8.Size = New System.Drawing.Size(68, 52)
@@ -305,7 +319,7 @@ Partial Class frmReceipt
         Me.cmdPay7.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay7.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay7.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay7.Location = New System.Drawing.Point(60, 327)
+        Me.cmdPay7.Location = New System.Drawing.Point(55, 402)
         Me.cmdPay7.Name = "cmdPay7"
         Me.cmdPay7.Rounded = False
         Me.cmdPay7.Size = New System.Drawing.Size(68, 52)
@@ -319,7 +333,7 @@ Partial Class frmReceipt
         Me.cmdPay6.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay6.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay6.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay6.Location = New System.Drawing.Point(208, 269)
+        Me.cmdPay6.Location = New System.Drawing.Point(203, 344)
         Me.cmdPay6.Name = "cmdPay6"
         Me.cmdPay6.Rounded = False
         Me.cmdPay6.Size = New System.Drawing.Size(68, 52)
@@ -333,7 +347,7 @@ Partial Class frmReceipt
         Me.cmdPay5.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay5.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay5.Location = New System.Drawing.Point(134, 269)
+        Me.cmdPay5.Location = New System.Drawing.Point(129, 344)
         Me.cmdPay5.Name = "cmdPay5"
         Me.cmdPay5.Rounded = False
         Me.cmdPay5.Size = New System.Drawing.Size(68, 52)
@@ -347,7 +361,7 @@ Partial Class frmReceipt
         Me.cmdPay4.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay4.Location = New System.Drawing.Point(60, 269)
+        Me.cmdPay4.Location = New System.Drawing.Point(55, 344)
         Me.cmdPay4.Name = "cmdPay4"
         Me.cmdPay4.Rounded = False
         Me.cmdPay4.Size = New System.Drawing.Size(68, 52)
@@ -361,7 +375,7 @@ Partial Class frmReceipt
         Me.cmdPay3.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay3.Location = New System.Drawing.Point(208, 211)
+        Me.cmdPay3.Location = New System.Drawing.Point(203, 286)
         Me.cmdPay3.Name = "cmdPay3"
         Me.cmdPay3.Rounded = False
         Me.cmdPay3.Size = New System.Drawing.Size(68, 52)
@@ -375,7 +389,7 @@ Partial Class frmReceipt
         Me.cmdPay2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay2.Location = New System.Drawing.Point(134, 211)
+        Me.cmdPay2.Location = New System.Drawing.Point(129, 286)
         Me.cmdPay2.Name = "cmdPay2"
         Me.cmdPay2.Rounded = False
         Me.cmdPay2.Size = New System.Drawing.Size(68, 52)
@@ -389,7 +403,7 @@ Partial Class frmReceipt
         Me.cmdPay1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdPay1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.cmdPay1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdPay1.Location = New System.Drawing.Point(60, 211)
+        Me.cmdPay1.Location = New System.Drawing.Point(55, 286)
         Me.cmdPay1.Name = "cmdPay1"
         Me.cmdPay1.Rounded = False
         Me.cmdPay1.Size = New System.Drawing.Size(68, 52)
@@ -402,7 +416,7 @@ Partial Class frmReceipt
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(477, 304)
+        Me.Label2.Location = New System.Drawing.Point(553, 302)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(71, 21)
         Me.Label2.TabIndex = 35
@@ -413,7 +427,7 @@ Partial Class frmReceipt
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(479, 393)
+        Me.Label1.Location = New System.Drawing.Point(541, 399)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(95, 21)
         Me.Label1.TabIndex = 33
@@ -424,7 +438,7 @@ Partial Class frmReceipt
         Me.txtChangeDue.BackColor = System.Drawing.Color.Transparent
         Me.txtChangeDue.Enabled = False
         Me.txtChangeDue.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtChangeDue.Location = New System.Drawing.Point(565, 420)
+        Me.txtChangeDue.Location = New System.Drawing.Point(564, 429)
         Me.txtChangeDue.MaxLength = 32767
         Me.txtChangeDue.Multiline = False
         Me.txtChangeDue.Name = "txtChangeDue"
@@ -441,7 +455,7 @@ Partial Class frmReceipt
         Me.statusReceipt.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.statusReceipt.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.statusReceipt.ForeColor = System.Drawing.Color.White
-        Me.statusReceipt.Location = New System.Drawing.Point(0, 516)
+        Me.statusReceipt.Location = New System.Drawing.Point(0, 583)
         Me.statusReceipt.Name = "statusReceipt"
         Me.statusReceipt.RectColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.statusReceipt.ShowTimeDate = False
@@ -451,99 +465,74 @@ Partial Class frmReceipt
         '
         'tableReceipt
         '
+        Me.tableReceipt.AllowUserToAddRows = False
+        Me.tableReceipt.AllowUserToDeleteRows = False
         Me.tableReceipt.BackgroundColor = System.Drawing.SystemColors.ControlDark
         Me.tableReceipt.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tableReceipt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.tableReceipt.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.columnItem, Me.columnQuantity, Me.columnTax, Me.columnCharge, Me.columnTimeIn, Me.columnNewTimeOut, Me.columnMember})
+        Me.tableReceipt.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.columnItem, Me.columnQuantity, Me.columnTax, Me.columnMember, Me.columnCharge})
         Me.tableReceipt.Location = New System.Drawing.Point(18, 61)
         Me.tableReceipt.Name = "tableReceipt"
         Me.tableReceipt.ReadOnly = True
         Me.tableReceipt.Size = New System.Drawing.Size(722, 132)
         Me.tableReceipt.TabIndex = 30
         '
-        'cmdClose
-        '
-        Me.cmdClose.BackColor = System.Drawing.Color.Transparent
-        Me.cmdClose.BaseColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(96, Byte), Integer))
-        Me.cmdClose.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.cmdClose.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.cmdClose.Location = New System.Drawing.Point(644, 12)
-        Me.cmdClose.Name = "cmdClose"
-        Me.cmdClose.Rounded = False
-        Me.cmdClose.Size = New System.Drawing.Size(96, 29)
-        Me.cmdClose.TabIndex = 29
-        Me.cmdClose.Text = "Close"
-        Me.cmdClose.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(478, 216)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(60, 21)
-        Me.Label7.TabIndex = 28
-        Me.Label7.Text = "Charge"
-        '
         'columnItem
         '
-        Me.columnItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.columnItem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.columnItem.FillWeight = 70.0!
         Me.columnItem.HeaderText = "Item"
         Me.columnItem.Name = "columnItem"
         Me.columnItem.ReadOnly = True
-        Me.columnItem.Width = 200
         '
         'columnQuantity
         '
+        Me.columnQuantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.columnQuantity.FillWeight = 13.0!
         Me.columnQuantity.HeaderText = "Qty"
         Me.columnQuantity.Name = "columnQuantity"
         Me.columnQuantity.ReadOnly = True
         '
         'columnTax
         '
+        Me.columnTax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.columnTax.FillWeight = 20.0!
         Me.columnTax.HeaderText = "Tax"
         Me.columnTax.Name = "columnTax"
         Me.columnTax.ReadOnly = True
         '
-        'columnCharge
-        '
-        Me.columnCharge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.columnCharge.FillWeight = 20.0!
-        Me.columnCharge.HeaderText = "Charge"
-        Me.columnCharge.Name = "columnCharge"
-        Me.columnCharge.ReadOnly = True
-        Me.columnCharge.Width = 116
-        '
-        'columnTimeIn
-        '
-        Me.columnTimeIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.columnTimeIn.FillWeight = 40.0!
-        Me.columnTimeIn.HeaderText = "Time In"
-        Me.columnTimeIn.Name = "columnTimeIn"
-        Me.columnTimeIn.ReadOnly = True
-        Me.columnTimeIn.Width = 185
-        '
-        'columnNewTimeOut
-        '
-        Me.columnNewTimeOut.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.columnNewTimeOut.FillWeight = 40.0!
-        Me.columnNewTimeOut.HeaderText = "(New) Time Out"
-        Me.columnNewTimeOut.Name = "columnNewTimeOut"
-        Me.columnNewTimeOut.ReadOnly = True
-        Me.columnNewTimeOut.Width = 185
-        '
         'columnMember
         '
+        Me.columnMember.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.columnMember.FillWeight = 30.0!
         Me.columnMember.HeaderText = "Member"
         Me.columnMember.Name = "columnMember"
         Me.columnMember.ReadOnly = True
+        '
+        'columnCharge
+        '
+        Me.columnCharge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.columnCharge.FillWeight = 30.0!
+        Me.columnCharge.HeaderText = "Charge"
+        Me.columnCharge.Name = "columnCharge"
+        Me.columnCharge.ReadOnly = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(557, 212)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(60, 21)
+        Me.Label7.TabIndex = 28
+        Me.Label7.Text = "Charge"
         '
         'frmReceipt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(748, 539)
+        Me.ClientSize = New System.Drawing.Size(748, 606)
         Me.Controls.Add(Me.FormSkin1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmReceipt"
@@ -560,7 +549,6 @@ Partial Class frmReceipt
     Friend WithEvents FormSkin1 As cybercafe_server.FormSkin
     Friend WithEvents txtCharge As cybercafe_server.FlatTextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents cmdClose As cybercafe_server.FlatButton
     Friend WithEvents tableReceipt As System.Windows.Forms.DataGridView
     Friend WithEvents statusReceipt As cybercafe_server.FlatStatusBar
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -578,7 +566,7 @@ Partial Class frmReceipt
     Friend WithEvents cmdPay3 As cybercafe_server.FlatButton
     Friend WithEvents cmdPay2 As cybercafe_server.FlatButton
     Friend WithEvents cmdPay1 As cybercafe_server.FlatButton
-    Friend WithEvents FlatButton12 As cybercafe_server.FlatButton
+    Friend WithEvents cmdOk As cybercafe_server.FlatButton
     Friend WithEvents cmdAllClear As cybercafe_server.FlatButton
     Friend WithEvents txtPaymentCurrency As cybercafe_server.FlatTextBox
     Friend WithEvents txtChargeCurrency As cybercafe_server.FlatTextBox
@@ -589,8 +577,7 @@ Partial Class frmReceipt
     Friend WithEvents columnItem As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents columnQuantity As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents columnTax As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents columnCharge As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents columnTimeIn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents columnNewTimeOut As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents columnMember As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents columnCharge As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FlatTextBox1 As cybercafe_server.FlatTextBox
 End Class

@@ -18,38 +18,56 @@ Public Class frmReceipt
     Private hours As Integer = frmPrepaid.hours
     Private minutes As Integer = frmPrepaid.minutes
     Private accesslevel As Integer = Int(readClientConfig("clients", "accesslevel", pc))
+    Private openCharges As Double = calculateOpen(pc)
     Private countCharges As Double = 0.0
     Private payment As Double = 0.0
     Private startCents As Boolean = False
+    Private paid As Boolean = False
 
     Private Sub frmReceipt_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         frmPrepaid.Enabled = False
+        tableReceipt.DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        tableReceipt.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         txtChangeDue.Text = "0.00"
+
         txtChargeCurrency.Text = My.Settings.currency
         txtPaymentCurrency.Text = My.Settings.currency
         txtChangeDueCurrency.Text = My.Settings.currency
-        If accesslevel = 2 And frmHome.prepaidMode = 0 Then
+        If accesslevel = 2 Then
             logout(pc)
             countCharges = calculateOpen(pc)
             charges = calculateOpen(pc)
-            tableReceipt.Rows.Add("Open Hour", "1", "", My.Settings.currency + Format(calculateOpen(pc), " 0.00"), readClientConfig("clients", "timein", pc), readClientConfig("clients", "timeout", pc))
-            txtCharge.Text = My.Settings.currency + Format(charges, " 0.00")
+            tableReceipt.Rows.Add( _
+                "Open Hour" & vbNewLine & "Time In: " & readClientConfig("clients", "timein", pc) & vbNewLine & "Time Out: " & readClientConfig("clients", "timeout", pc), _
+                "1", _
+                "", _
+                "", _
+                My.Settings.currency + Format(calculateOpen(pc), " 0.00"))
+            txtCharge.Text = Format(calculateOpen(pc), " 0.00")
         ElseIf frmHome.prepaidMode = 1 Then
             countCharges = calculateToCharge(hours, minutes)
-            tableReceipt.Rows.Add("Top Up (Prepaid)", "1", "", My.Settings.currency + Format(calculateToCharge(frmPrepaid.hours, frmPrepaid.minutes), " 0.00"), readClientConfig("clients", "timein", pc), readClientConfig("clients", "timeout", pc))
+            tableReceipt.Rows.Add( _
+                "Top Up (Prepaid)" & vbNewLine & "Time In: " & readClientConfig("clients", "timein", pc) & vbNewLine & "Time Out: " & readClientConfig("clients", "timeout", pc), _
+                "1", _
+                "", _
+                "", _
+                My.Settings.currency + Format(calculateToCharge(frmPrepaid.hours, frmPrepaid.minutes), " 0.00"))
             txtCharge.Text = Format(calculateToCharge(hours, minutes), "0.00")
         ElseIf frmHome.prepaidMode = 0 Then
             countCharges = calculateToCharge(hours, minutes)
-            tableReceipt.Rows.Add("Unlock PC (Prepaid)", "1", "", My.Settings.currency + Format(calculateToCharge(frmPrepaid.hours, frmPrepaid.minutes), " 0.00"), readClientConfig("clients", "timein", pc), readClientConfig("clients", "timeout", pc))
+            tableReceipt.Rows.Add( _
+                "Unlock PC (Prepaid)" & vbNewLine & "Time In: " & readClientConfig("clients", "timein", pc) & vbNewLine & "Time Out: " & readClientConfig("clients", "timeout", pc), _
+                "1", _
+                "", _
+                "", _
+                My.Settings.currency + Format(calculateToCharge(frmPrepaid.hours, frmPrepaid.minutes), " 0.00"))
             txtCharge.Text = Format(calculateToCharge(hours, minutes), "0.00")
         End If
 
-    End Sub
+        If charges = 0 Then
+            paid = True
+        End If
 
-    Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
-        Me.Close()
-        frmPrepaid.Close()
-        frmHome.clientInfo()
     End Sub
 
     Private Sub cmdPay1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPay1.Click
@@ -120,20 +138,31 @@ Public Class frmReceipt
         payment = txtPayment.Text
         If Format(payment - countCharges) > 0 Then
             txtChangeDue.Text = Format(payment - countCharges, "0.00")
+            paid = True
+        ElseIf Format(payment - countCharges) = 0 Then
+            txtChangeDue.Text = "0.00"
+            paid = True
         Else
             txtChangeDue.Text = "0.00"
+            paid = False
         End If
 
     End Sub
 
     Private Sub toggleFree_CheckedChanged(ByVal sender As System.Object) Handles toggleFree.CheckedChanged
         If toggleFree.Checked = True Then
-            tableReceipt.Rows.Add("Adjustment", " ", " ", "-" + Format(calculateToCharge(frmPrepaid.hours, frmPrepaid.minutes), "RM 0.00"))
+            tableReceipt.Rows.Add( _
+                "Adjustment (Already Paid)", _
+                "", _
+                "", _
+                "", _
+                "- " + My.Settings.currency + Format(countCharges, " 0.00"))
             txtCharge.Text = "0.00"
             countCharges = 0.0
-            charges = 0.0
+            paid = True
         Else
             tableReceipt.Rows.RemoveAt(1)
+
             If frmHome.prepaidMode = 0 Then
                 countCharges = calculateToCharge(hours, minutes)
                 txtCharge.Text = Format(calculateToCharge(hours, minutes), "0.00")
@@ -141,17 +170,24 @@ Public Class frmReceipt
                 countCharges = calculateToCharge(hours, minutes)
                 txtCharge.Text = Format(calculateToCharge(hours, minutes), "0.00")
             ElseIf accesslevel = 2 Then
-                logout(pc)
-                countCharges = calculateOpen(pc)
                 charges = calculateOpen(pc)
-                txtCharge.Text = My.Settings.currency + Format(charges, " 0.00")
+                countCharges = charges
+                txtCharge.Text = Format(calculateOpen(pc), "0.00")
             End If
+
+            reformat()
         End If
 
     End Sub
 
-
-    Private Sub FlatButton12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FlatButton12.Click
-
+    Private Sub cmdOk_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOk.Click
+        If paid = True Then
+            Me.Close()
+            frmPrepaid.Close()
+            frmHome.clientInfo()
+        Else
+            errorbox("Please pay the invoice before closing the form.", "Unpaid invoice")
+        End If
+        
     End Sub
 End Class

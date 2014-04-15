@@ -22,7 +22,7 @@ Public Class frmPrepaid
     ' this is counted manually / incremented as user add hours and minutes. 
     ' no need to use timespan for this
 
-    Public charges As String
+    Public charges As Double
 
     Private Function changeAlertBox(ByVal message As String, ByVal kind As String)
         alertPrepaid.Hide()
@@ -125,8 +125,8 @@ Public Class frmPrepaid
 
     Private Sub txtAddTime_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtAddTime.TextChanged
         txtNewTimeOut.Text = addtime(hours, minutes, prepaidMode, pc)
-        charges = My.Settings.currency + " " + Format(calculateToCharge(hours, minutes), "0.00")
-        txtCharge.Text = charges
+        charges = calculateToCharge(hours, minutes)
+        txtCharge.Text = Format(charges, My.Settings.currency + " 0.00")
     End Sub
 
     Private Sub frmPrepaid_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
@@ -175,6 +175,7 @@ Public Class frmPrepaid
             recordTime(hours, minutes, pc)
         End If
         saveClientConfig("clients", "istimeout", 0, pc)
+        charges = calculateToCharge(hours, minutes)
         frmReceipt.Show()
     End Sub
 End Class

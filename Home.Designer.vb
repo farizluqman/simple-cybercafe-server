@@ -1150,6 +1150,8 @@ Partial Class frmHome
         '
         'dataMembers
         '
+        Me.dataMembers.AllowUserToAddRows = False
+        Me.dataMembers.AllowUserToDeleteRows = False
         Me.dataMembers.AutoGenerateColumns = False
         Me.dataMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataMembers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDNumberDataGridViewTextBoxColumn, Me.MemberNameDataGridViewTextBoxColumn, Me.MemberDOBDataGridViewTextBoxColumn, Me.BalanceDataGridViewTextBoxColumn, Me.UsernameDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.IsLoggedInDataGridViewCheckBoxColumn})
@@ -1202,6 +1204,7 @@ Partial Class frmHome
         'TypeDataGridViewTextBoxColumn
         '
         Me.TypeDataGridViewTextBoxColumn.DataPropertyName = "Type"
+        Me.TypeDataGridViewTextBoxColumn.FillWeight = 90.0!
         Me.TypeDataGridViewTextBoxColumn.HeaderText = "Type"
         Me.TypeDataGridViewTextBoxColumn.Name = "TypeDataGridViewTextBoxColumn"
         Me.TypeDataGridViewTextBoxColumn.ReadOnly = True
@@ -1544,13 +1547,6 @@ Partial Class frmHome
     Friend WithEvents ServerDataSet As cybercafe_server.serverDataSet
     Friend WithEvents TblMembersBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents TblMembersTableAdapter As cybercafe_server.serverDataSetTableAdapters.tblMembersTableAdapter
-    Friend WithEvents IDNumberDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MemberNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MemberDOBDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BalanceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents UsernameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TypeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IsLoggedInDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents cmdDeleteSelectedMember As cybercafe_server.FlatButton
     Friend WithEvents cmdSendMessages As cybercafe_server.FlatButton
     Friend WithEvents cmdEditMembershipTypes As cybercafe_server.FlatButton
@@ -1561,5 +1557,12 @@ Partial Class frmHome
     Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage7 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents IDNumberDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MemberNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MemberDOBDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents BalanceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UsernameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TypeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IsLoggedInDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
 
 End Class
