@@ -33,13 +33,13 @@ Partial Class frmHome
         Me.HelpProvider1 = New System.Windows.Forms.HelpProvider()
         Me.TblMembersTableAdapter = New cybercafe_server.serverDataSetTableAdapters.tblMembersTableAdapter()
         Me.FormSkin1s = New cybercafe_server.FormSkin()
+        Me.FlatMax1 = New cybercafe_server.FlatMax()
         Me.cmdLogout = New cybercafe_server.FlatButton()
         Me.alertHome = New cybercafe_server.FlatAlertBox()
         Me.cmdSettings = New cybercafe_server.FlatButton()
         Me.statusMain = New cybercafe_server.FlatStatusBar()
         Me.FlatClose1 = New cybercafe_server.FlatClose()
         Me.FlatMini1 = New cybercafe_server.FlatMini()
-        Me.FlatMax1 = New cybercafe_server.FlatMax()
         Me.FlatTabControl1 = New cybercafe_server.FlatTabControl()
         Me.tabTerminal = New System.Windows.Forms.TabPage()
         Me.FlatButton5 = New cybercafe_server.FlatButton()
@@ -186,19 +186,19 @@ Partial Class frmHome
         Me.FormSkin1s.BackColor = System.Drawing.Color.White
         Me.FormSkin1s.BaseColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.FormSkin1s.BorderColor = System.Drawing.Color.FromArgb(CType(CType(53, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(60, Byte), Integer))
+        Me.FormSkin1s.Controls.Add(Me.FlatMax1)
         Me.FormSkin1s.Controls.Add(Me.cmdLogout)
         Me.FormSkin1s.Controls.Add(Me.alertHome)
         Me.FormSkin1s.Controls.Add(Me.cmdSettings)
         Me.FormSkin1s.Controls.Add(Me.statusMain)
         Me.FormSkin1s.Controls.Add(Me.FlatClose1)
         Me.FormSkin1s.Controls.Add(Me.FlatMini1)
-        Me.FormSkin1s.Controls.Add(Me.FlatMax1)
         Me.FormSkin1s.Controls.Add(Me.FlatTabControl1)
         Me.FormSkin1s.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FormSkin1s.FlatColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FormSkin1s.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.FormSkin1s.HeaderColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.FormSkin1s.HeaderMaximize = False
+        Me.FormSkin1s.HeaderMaximize = True
         Me.FormSkin1s.Location = New System.Drawing.Point(0, 0)
         Me.FormSkin1s.Name = "FormSkin1s"
         Me.FormSkin1s.Size = New System.Drawing.Size(1011, 678)
@@ -206,8 +206,22 @@ Partial Class frmHome
         Me.FormSkin1s.TabStop = False
         Me.FormSkin1s.Text = "Simple CyberCafe Server 1.0"
         '
+        'FlatMax1
+        '
+        Me.FlatMax1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FlatMax1.BackColor = System.Drawing.Color.White
+        Me.FlatMax1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.FlatMax1.Font = New System.Drawing.Font("Marlett", 12.0!)
+        Me.FlatMax1.Location = New System.Drawing.Point(947, 14)
+        Me.FlatMax1.Name = "FlatMax1"
+        Me.FlatMax1.Size = New System.Drawing.Size(18, 18)
+        Me.FlatMax1.TabIndex = 7
+        Me.FlatMax1.Text = "FlatMax1"
+        Me.FlatMax1.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
         'cmdLogout
         '
+        Me.cmdLogout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdLogout.BackColor = System.Drawing.Color.Transparent
         Me.cmdLogout.BaseColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.cmdLogout.Cursor = System.Windows.Forms.Cursors.Hand
@@ -222,6 +236,8 @@ Partial Class frmHome
         '
         'alertHome
         '
+        Me.alertHome.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.alertHome.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.alertHome.Cursor = System.Windows.Forms.Cursors.Hand
         Me.alertHome.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -235,6 +251,7 @@ Partial Class frmHome
         '
         'cmdSettings
         '
+        Me.cmdSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdSettings.BackColor = System.Drawing.Color.Transparent
         Me.cmdSettings.BaseColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.cmdSettings.Cursor = System.Windows.Forms.Cursors.Hand
@@ -288,23 +305,12 @@ Partial Class frmHome
         Me.FlatMini1.Text = "FlatMini1"
         Me.FlatMini1.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
-        'FlatMax1
-        '
-        Me.FlatMax1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.FlatMax1.BackColor = System.Drawing.Color.White
-        Me.FlatMax1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.FlatMax1.Enabled = False
-        Me.FlatMax1.Font = New System.Drawing.Font("Marlett", 12.0!)
-        Me.FlatMax1.Location = New System.Drawing.Point(952, 14)
-        Me.FlatMax1.Name = "FlatMax1"
-        Me.FlatMax1.Size = New System.Drawing.Size(18, 18)
-        Me.FlatMax1.TabIndex = 0
-        Me.FlatMax1.Text = "FlatMax1"
-        Me.FlatMax1.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        '
         'FlatTabControl1
         '
         Me.FlatTabControl1.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.FlatTabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl1.Controls.Add(Me.tabTerminal)
         Me.FlatTabControl1.Controls.Add(Me.tabMembers)
@@ -340,6 +346,7 @@ Partial Class frmHome
         '
         'FlatButton5
         '
+        Me.FlatButton5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.FlatButton5.BackColor = System.Drawing.Color.Transparent
         Me.FlatButton5.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatButton5.Cursor = System.Windows.Forms.Cursors.Hand
@@ -354,6 +361,7 @@ Partial Class frmHome
         '
         'FlatButton4
         '
+        Me.FlatButton4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.FlatButton4.BackColor = System.Drawing.Color.Transparent
         Me.FlatButton4.BaseColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(96, Byte), Integer))
         Me.FlatButton4.Cursor = System.Windows.Forms.Cursors.Hand
@@ -368,6 +376,7 @@ Partial Class frmHome
         '
         'FlatButton3
         '
+        Me.FlatButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.FlatButton3.BackColor = System.Drawing.Color.Transparent
         Me.FlatButton3.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatButton3.Cursor = System.Windows.Forms.Cursors.Hand
@@ -383,6 +392,7 @@ Partial Class frmHome
         'linkClear
         '
         Me.linkClear.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.linkClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.linkClear.AutoSize = True
         Me.linkClear.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.linkClear.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -414,6 +424,9 @@ Partial Class frmHome
         '
         'txtFilter
         '
+        Me.txtFilter.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtFilter.BackColor = System.Drawing.Color.Transparent
         Me.txtFilter.Location = New System.Drawing.Point(107, 17)
         Me.txtFilter.MaxLength = 32767
@@ -428,6 +441,7 @@ Partial Class frmHome
         '
         'cmdRefreshClients
         '
+        Me.cmdRefreshClients.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdRefreshClients.BackColor = System.Drawing.Color.Transparent
         Me.cmdRefreshClients.BaseColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.cmdRefreshClients.Cursor = System.Windows.Forms.Cursors.Hand
@@ -443,6 +457,8 @@ Partial Class frmHome
         'FlatTabControl2
         '
         Me.FlatTabControl2.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.FlatTabControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl2.Controls.Add(Me.tabBilling)
         Me.FlatTabControl2.Controls.Add(Me.tabCommands)
@@ -681,6 +697,7 @@ Partial Class frmHome
         '
         'cmdMembers
         '
+        Me.cmdMembers.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdMembers.BackColor = System.Drawing.Color.Transparent
         Me.cmdMembers.BaseColor = System.Drawing.Color.FromArgb(CType(CType(155, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(181, Byte), Integer))
         Me.cmdMembers.Cursor = System.Windows.Forms.Cursors.Hand
@@ -695,6 +712,7 @@ Partial Class frmHome
         '
         'cmdPrepaid
         '
+        Me.cmdPrepaid.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdPrepaid.BackColor = System.Drawing.Color.Transparent
         Me.cmdPrepaid.BaseColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cmdPrepaid.Cursor = System.Windows.Forms.Cursors.Hand
@@ -1007,6 +1025,9 @@ Partial Class frmHome
         '
         'listClients
         '
+        Me.listClients.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.listClients.BackgroundImageTiled = True
         Me.listClients.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.listClients.ContextMenuStrip = Me.menuTermClients
@@ -1152,6 +1173,9 @@ Partial Class frmHome
         '
         Me.dataMembers.AllowUserToAddRows = False
         Me.dataMembers.AllowUserToDeleteRows = False
+        Me.dataMembers.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dataMembers.AutoGenerateColumns = False
         Me.dataMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataMembers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDNumberDataGridViewTextBoxColumn, Me.MemberNameDataGridViewTextBoxColumn, Me.MemberDOBDataGridViewTextBoxColumn, Me.BalanceDataGridViewTextBoxColumn, Me.UsernameDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.IsLoggedInDataGridViewCheckBoxColumn})
@@ -1166,6 +1190,7 @@ Partial Class frmHome
         '
         'IDNumberDataGridViewTextBoxColumn
         '
+        Me.IDNumberDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.IDNumberDataGridViewTextBoxColumn.DataPropertyName = "ID_Number"
         Me.IDNumberDataGridViewTextBoxColumn.HeaderText = "ID"
         Me.IDNumberDataGridViewTextBoxColumn.Name = "IDNumberDataGridViewTextBoxColumn"
@@ -1173,14 +1198,15 @@ Partial Class frmHome
         '
         'MemberNameDataGridViewTextBoxColumn
         '
+        Me.MemberNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.MemberNameDataGridViewTextBoxColumn.DataPropertyName = "Member_Name"
         Me.MemberNameDataGridViewTextBoxColumn.HeaderText = "Name"
         Me.MemberNameDataGridViewTextBoxColumn.Name = "MemberNameDataGridViewTextBoxColumn"
         Me.MemberNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MemberNameDataGridViewTextBoxColumn.Width = 130
         '
         'MemberDOBDataGridViewTextBoxColumn
         '
+        Me.MemberDOBDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.MemberDOBDataGridViewTextBoxColumn.DataPropertyName = "Member_DOB"
         Me.MemberDOBDataGridViewTextBoxColumn.HeaderText = "DOB"
         Me.MemberDOBDataGridViewTextBoxColumn.Name = "MemberDOBDataGridViewTextBoxColumn"
@@ -1189,6 +1215,7 @@ Partial Class frmHome
         '
         'BalanceDataGridViewTextBoxColumn
         '
+        Me.BalanceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.BalanceDataGridViewTextBoxColumn.DataPropertyName = "Balance"
         Me.BalanceDataGridViewTextBoxColumn.HeaderText = "Balance"
         Me.BalanceDataGridViewTextBoxColumn.Name = "BalanceDataGridViewTextBoxColumn"
@@ -1196,6 +1223,7 @@ Partial Class frmHome
         '
         'UsernameDataGridViewTextBoxColumn
         '
+        Me.UsernameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.UsernameDataGridViewTextBoxColumn.DataPropertyName = "Username"
         Me.UsernameDataGridViewTextBoxColumn.HeaderText = "Username"
         Me.UsernameDataGridViewTextBoxColumn.Name = "UsernameDataGridViewTextBoxColumn"
@@ -1203,6 +1231,7 @@ Partial Class frmHome
         '
         'TypeDataGridViewTextBoxColumn
         '
+        Me.TypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.TypeDataGridViewTextBoxColumn.DataPropertyName = "Type"
         Me.TypeDataGridViewTextBoxColumn.FillWeight = 90.0!
         Me.TypeDataGridViewTextBoxColumn.HeaderText = "Type"
@@ -1211,11 +1240,11 @@ Partial Class frmHome
         '
         'IsLoggedInDataGridViewCheckBoxColumn
         '
+        Me.IsLoggedInDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.IsLoggedInDataGridViewCheckBoxColumn.DataPropertyName = "IsLoggedIn"
         Me.IsLoggedInDataGridViewCheckBoxColumn.HeaderText = "Logged In"
         Me.IsLoggedInDataGridViewCheckBoxColumn.Name = "IsLoggedInDataGridViewCheckBoxColumn"
         Me.IsLoggedInDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.IsLoggedInDataGridViewCheckBoxColumn.Width = 78
         '
         'Label12
         '
@@ -1241,6 +1270,7 @@ Partial Class frmHome
         'LinkLabel1
         '
         Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.LinkLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1272,6 +1302,8 @@ Partial Class frmHome
         '
         'FlatTextBox3
         '
+        Me.FlatTextBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTextBox3.BackColor = System.Drawing.Color.Transparent
         Me.FlatTextBox3.Location = New System.Drawing.Point(311, 28)
         Me.FlatTextBox3.MaxLength = 32767
@@ -1298,6 +1330,9 @@ Partial Class frmHome
         'FlatTabControl3
         '
         Me.FlatTabControl3.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.FlatTabControl3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl3.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl3.Controls.Add(Me.tabFnD)
         Me.FlatTabControl3.Controls.Add(Me.tabPrinting)
@@ -1363,6 +1398,9 @@ Partial Class frmHome
         'FlatTabControl4
         '
         Me.FlatTabControl4.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
+        Me.FlatTabControl4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl4.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl4.Controls.Add(Me.TabPage1)
         Me.FlatTabControl4.Controls.Add(Me.TabPage5)
@@ -1431,7 +1469,6 @@ Partial Class frmHome
         Me.ClientSize = New System.Drawing.Size(1011, 678)
         Me.Controls.Add(Me.FormSkin1s)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.MaximizeBox = False
         Me.Name = "frmHome"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CyberCafe Server 1.0"
@@ -1463,7 +1500,6 @@ Partial Class frmHome
     Friend WithEvents FormSkin1s As cybercafe_server.FormSkin
     Friend WithEvents FlatClose1 As cybercafe_server.FlatClose
     Friend WithEvents FlatMini1 As cybercafe_server.FlatMini
-    Friend WithEvents FlatMax1 As cybercafe_server.FlatMax
     Friend WithEvents statusMain As cybercafe_server.FlatStatusBar
     Friend WithEvents FlatTabControl1 As cybercafe_server.FlatTabControl
     Friend WithEvents tabTerminal As System.Windows.Forms.TabPage
@@ -1557,6 +1593,7 @@ Partial Class frmHome
     Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage7 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents FlatMax1 As cybercafe_server.FlatMax
     Friend WithEvents IDNumberDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MemberNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MemberDOBDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
