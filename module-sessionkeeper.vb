@@ -12,7 +12,7 @@
 '   See the License for the specific language governing permissions and
 '   limitations under the License.
 
-Module module_timekeeper
+Module module_sessionkeeper
 
     Public Function getTimeIn(ByVal pc As String) As String
         Return System.Convert.ToDateTime(readClientConfig("clients", "timein", pc))
@@ -113,6 +113,31 @@ Module module_timekeeper
         saveClientConfig("clients", "accesslevel", 2, pc)
         saveClientConfig("clients", "timein", Now, pc)
         Return 0
+    End Function
+
+
+    Public Function transfer(ByVal target As String, ByVal destination As String) As Boolean
+
+        Dim status As Boolean = False
+
+        If My.Computer.FileSystem.FileExists("clients\" + target + ".cfg") And My.Computer.FileSystem.FileExists("clients\" + destination + ".cfg") Then
+            Try
+                My.Computer.FileSystem.RenameFile("clients\" + target + ".cfg", target + ".cfg.temp")
+                My.Computer.FileSystem.RenameFile("clients\" + destination + ".cfg", destination + ".cfg.temp")
+                My.Computer.FileSystem.RenameFile("clients\" + target + ".cfg.temp", destination + ".cfg")
+                My.Computer.FileSystem.RenameFile("clients\" + destination + ".cfg.temp", target + ".cfg")
+                infobox("Successfully transferred the session from " + target + " to " + destination, "Successful transfer session")
+                status = True
+            Catch ex As Exception
+                appendLog(ex.Message.ToString)
+                status = False
+            End Try
+        Else
+            errorbox("Invalid target or destination PC", "Error")
+        End If
+        
+
+        Return status
     End Function
 
 End Module

@@ -106,7 +106,7 @@ Public Class frmHome
         End If
     End Sub
 
-    Private Sub CloseSessionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseSessionToolStripMenuItem.Click
+    Private Sub CloseSessionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tooltipCloseSession.Click
         Dim accesslevel = readClientConfig("clients", "accesslevel", selectedPC)
         If MsgBox("Do you want to close the current session?", vbQuestion + vbYesNo, "Close session") = MsgBoxResult.Yes Then
             If accesslevel = 0 Then
@@ -235,7 +235,7 @@ Public Class frmHome
         txtTotalTime.Text = getTotalTime(selectedPC)
     End Sub
 
-    Private Sub OpenSessionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenSessionToolStripMenuItem.Click
+    Private Sub OpenSessionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tooltipOpenSession.Click
         If MsgBox("Do you want to login the client into open hour mode?", vbQuestion + vbYesNo, "Open session") = MsgBoxResult.Yes Then
             Dim accesslevel As Integer = Int(readClientConfig("clients", "accesslevel", selectedPC))
             If accesslevel = 0 Then
@@ -291,5 +291,9 @@ Public Class frmHome
 
     Private Sub cmdSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSettings.Click
         frmConfiguration.Show()
+    End Sub
+
+    Private Sub tooltipTransferSession_Click(sender As Object, e As EventArgs) Handles tooltipTransferSession.Click
+        frmTransferPC.Show()
     End Sub
 End Class

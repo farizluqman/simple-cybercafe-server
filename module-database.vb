@@ -28,7 +28,8 @@ Module module_database
                 connection.Dispose()
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            dberror()
+            appendLog(ex.Message.ToString)
             success = False
         End Try
         Return success
@@ -49,7 +50,8 @@ Module module_database
                 Try
                     level = Int(reader("Access_Level").ToString())
                 Catch ex As Exception
-                    errorbox("Error reading database. Please repair or generate a new one.", "Error reading database")
+                    dberror()
+                    appendLog(ex.Message.ToString)
                 End Try
                 command.Connection.Close()
                 command.Connection.Dispose()
@@ -62,8 +64,8 @@ Module module_database
                 Exit Function
             End If
         Catch ex As Exception
-            errorbox("Error reading database. Please repair or generate a new one.", "Error reading database")
-            ' MessageBox.Show(ex.Message) 
+            dberror()
+            appendLog(ex.Message.ToString)
         End Try
 
         Return level

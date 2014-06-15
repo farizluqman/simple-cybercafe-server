@@ -57,6 +57,7 @@ Module module_charges
     End Function
 
     Public Function calculateMinutesFromCash(ByVal cash As Double) As Integer
+
         Dim hourlyRate As Double = Convert.ToDouble(My.Settings.rate)
         Dim duration As TimeSpan = TimeSpan.FromHours(cash / hourlyRate)
         Dim minutes = duration.Minutes

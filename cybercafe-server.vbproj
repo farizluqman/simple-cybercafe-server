@@ -98,6 +98,7 @@
     <Compile Include="module-charges.vb" />
     <Compile Include="module-authentication.vb" />
     <Compile Include="module-database.vb" />
+    <Compile Include="module-errorhandler.vb" />
     <Compile Include="module-readsettings.vb" />
     <Compile Include="module-msgbox.vb" />
     <Compile Include="Home.vb">
@@ -119,7 +120,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="module-savesettings.vb" />
-    <Compile Include="module-timekeeper.vb" />
+    <Compile Include="module-sessionkeeper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -159,6 +160,12 @@
     <Compile Include="Theme.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TransferPC.Designer.vb">
+      <DependentUpon>TransferPC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TransferPC.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Configuration.resx">
@@ -186,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Receipt.resx">
       <DependentUpon>Receipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferPC.resx">
+      <DependentUpon>TransferPC.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -28,4 +28,8 @@ Module displaymessage
         MsgBox(message, vbExclamation, title)
     End Sub
 
+    Public Sub dberror()
+        errorbox("Could not access the database. Please check the error log to see the status.", "Error")
+    End Sub
+
 End Module

@@ -91,11 +91,11 @@ Partial Class frmHome
         Me.FlatButton1 = New cybercafe_server.FlatButton()
         Me.listClients = New System.Windows.Forms.ListView()
         Me.menuTermClients = New cybercafe_server.FlatContextMenuStrip()
-        Me.OpenSessionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TurnOffClientToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SendMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tooltipOpenSession = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tooltipTransferSession = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tooltipSendMessage = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.CloseSessionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tooltipCloseSession = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabMembers = New System.Windows.Forms.TabPage()
         Me.cmdDeleteSelectedMember = New cybercafe_server.FlatButton()
         Me.cmdSendMessages = New cybercafe_server.FlatButton()
@@ -237,7 +237,7 @@ Partial Class frmHome
         'alertHome
         '
         Me.alertHome.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.alertHome.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.alertHome.Cursor = System.Windows.Forms.Cursors.Hand
         Me.alertHome.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -309,8 +309,8 @@ Partial Class frmHome
         '
         Me.FlatTabControl1.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatTabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl1.Controls.Add(Me.tabTerminal)
         Me.FlatTabControl1.Controls.Add(Me.tabMembers)
@@ -425,8 +425,8 @@ Partial Class frmHome
         'txtFilter
         '
         Me.txtFilter.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtFilter.BackColor = System.Drawing.Color.Transparent
         Me.txtFilter.Location = New System.Drawing.Point(107, 17)
         Me.txtFilter.MaxLength = 32767
@@ -458,7 +458,7 @@ Partial Class frmHome
         '
         Me.FlatTabControl2.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.FlatTabControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl2.Controls.Add(Me.tabBilling)
         Me.FlatTabControl2.Controls.Add(Me.tabCommands)
@@ -1026,8 +1026,8 @@ Partial Class frmHome
         'listClients
         '
         Me.listClients.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.listClients.BackgroundImageTiled = True
         Me.listClients.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.listClients.ContextMenuStrip = Me.menuTermClients
@@ -1045,39 +1045,39 @@ Partial Class frmHome
         '
         Me.menuTermClients.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.menuTermClients.ForeColor = System.Drawing.Color.White
-        Me.menuTermClients.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenSessionToolStripMenuItem, Me.TurnOffClientToolStripMenuItem, Me.SendMessageToolStripMenuItem, Me.ToolStripSeparator1, Me.CloseSessionToolStripMenuItem})
+        Me.menuTermClients.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tooltipOpenSession, Me.tooltipTransferSession, Me.tooltipSendMessage, Me.ToolStripSeparator1, Me.tooltipCloseSession})
         Me.menuTermClients.Name = "menuTermClients"
         Me.menuTermClients.ShowImageMargin = False
         Me.menuTermClients.Size = New System.Drawing.Size(133, 98)
         '
-        'OpenSessionToolStripMenuItem
+        'tooltipOpenSession
         '
-        Me.OpenSessionToolStripMenuItem.Name = "OpenSessionToolStripMenuItem"
-        Me.OpenSessionToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.OpenSessionToolStripMenuItem.Text = "Open Session"
+        Me.tooltipOpenSession.Name = "tooltipOpenSession"
+        Me.tooltipOpenSession.Size = New System.Drawing.Size(132, 22)
+        Me.tooltipOpenSession.Text = "Open Session"
         '
-        'TurnOffClientToolStripMenuItem
+        'tooltipTransferSession
         '
-        Me.TurnOffClientToolStripMenuItem.Name = "TurnOffClientToolStripMenuItem"
-        Me.TurnOffClientToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.TurnOffClientToolStripMenuItem.Text = "Transfer Session"
+        Me.tooltipTransferSession.Name = "tooltipTransferSession"
+        Me.tooltipTransferSession.Size = New System.Drawing.Size(132, 22)
+        Me.tooltipTransferSession.Text = "Transfer Session"
         '
-        'SendMessageToolStripMenuItem
+        'tooltipSendMessage
         '
-        Me.SendMessageToolStripMenuItem.Name = "SendMessageToolStripMenuItem"
-        Me.SendMessageToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.SendMessageToolStripMenuItem.Text = "Send Message"
+        Me.tooltipSendMessage.Name = "tooltipSendMessage"
+        Me.tooltipSendMessage.Size = New System.Drawing.Size(132, 22)
+        Me.tooltipSendMessage.Text = "Send Message"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(129, 6)
         '
-        'CloseSessionToolStripMenuItem
+        'tooltipCloseSession
         '
-        Me.CloseSessionToolStripMenuItem.Name = "CloseSessionToolStripMenuItem"
-        Me.CloseSessionToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.CloseSessionToolStripMenuItem.Text = "Close Session"
+        Me.tooltipCloseSession.Name = "tooltipCloseSession"
+        Me.tooltipCloseSession.Size = New System.Drawing.Size(132, 22)
+        Me.tooltipCloseSession.Text = "Close Session"
         '
         'tabMembers
         '
@@ -1174,8 +1174,8 @@ Partial Class frmHome
         Me.dataMembers.AllowUserToAddRows = False
         Me.dataMembers.AllowUserToDeleteRows = False
         Me.dataMembers.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dataMembers.AutoGenerateColumns = False
         Me.dataMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dataMembers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDNumberDataGridViewTextBoxColumn, Me.MemberNameDataGridViewTextBoxColumn, Me.MemberDOBDataGridViewTextBoxColumn, Me.BalanceDataGridViewTextBoxColumn, Me.UsernameDataGridViewTextBoxColumn, Me.TypeDataGridViewTextBoxColumn, Me.IsLoggedInDataGridViewCheckBoxColumn})
@@ -1303,7 +1303,7 @@ Partial Class frmHome
         'FlatTextBox3
         '
         Me.FlatTextBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTextBox3.BackColor = System.Drawing.Color.Transparent
         Me.FlatTextBox3.Location = New System.Drawing.Point(311, 28)
         Me.FlatTextBox3.MaxLength = 32767
@@ -1331,8 +1331,8 @@ Partial Class frmHome
         '
         Me.FlatTabControl3.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.FlatTabControl3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl3.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl3.Controls.Add(Me.tabFnD)
         Me.FlatTabControl3.Controls.Add(Me.tabPrinting)
@@ -1399,8 +1399,8 @@ Partial Class frmHome
         '
         Me.FlatTabControl4.ActiveColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(63, Byte), Integer))
         Me.FlatTabControl4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.FlatTabControl4.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.FlatTabControl4.Controls.Add(Me.TabPage1)
         Me.FlatTabControl4.Controls.Add(Me.TabPage5)
@@ -1518,11 +1518,11 @@ Partial Class frmHome
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmdLogout As cybercafe_server.FlatButton
     Friend WithEvents menuTermClients As cybercafe_server.FlatContextMenuStrip
-    Friend WithEvents OpenSessionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TurnOffClientToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SendMessageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tooltipOpenSession As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tooltipTransferSession As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tooltipSendMessage As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents CloseSessionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tooltipCloseSession As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmdRefreshClients As cybercafe_server.FlatButton
     Friend WithEvents txtFilter As cybercafe_server.FlatTextBox
     Friend WithEvents FlatTextBox1 As cybercafe_server.FlatTextBox
